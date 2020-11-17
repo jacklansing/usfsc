@@ -33,6 +33,30 @@ const Home: React.FC<Props> = ({ posts }) => {
           position: 'relative',
         }}
       >
+        <div
+          sx={{
+            height: '300px',
+            width: '300px',
+            position: 'absolute',
+            backgroundImage: 'url(/blob.svg)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'fit',
+            opacity: 0.8,
+            top: -50,
+            left: -100,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img
+            src={'/unc-sam-logo.png'}
+            sx={{
+              height: '150px',
+            }}
+          />
+        </div>
         <main>
           <h1 sx={{ textAlign: 'center', marginTop: 5, fontSize: 6 }}>
             Uncle Sam Figure Skating Club
