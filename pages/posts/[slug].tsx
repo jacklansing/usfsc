@@ -1,6 +1,11 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import ReactMarkdown from 'react-markdown';
+import NextLink from 'next/link';
 import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
+import formatPostDate from '../../lib/utils/formatPostDate';
 
 interface Props {
   title: string;
@@ -11,10 +16,47 @@ interface Props {
 const PostPage: React.FC<Props> = (props) => {
   const { title, body, published_at } = props;
   return (
-    <article>
-      <h1>{title}</h1>
-      <h2>posted on {new Date(published_at).toLocaleDateString()}</h2>
-      <ReactMarkdown source={body} />
+    <article
+      sx={{
+        maxWidth: 900,
+        mx: 'auto',
+      }}
+    >
+      <header>
+        <h1
+          sx={{
+            textAlign: 'center',
+            variant: 'headings.h1',
+            marginBottom: 0,
+          }}
+        >
+          {title}
+        </h1>
+        <p
+          sx={{
+            variant: 'text.subtitle',
+            textAlign: 'center',
+          }}
+        >
+          {formatPostDate(published_at)}
+        </p>
+      </header>
+      <ReactMarkdown
+        source={body}
+        sx={{
+          variant: 'text.body',
+        }}
+      />
+      <NextLink href={`/`}>
+        <a
+          sx={{
+            variant: 'text.postPreviewLink',
+            marginLeft: 0,
+          }}
+        >
+          &larr; Back
+        </a>
+      </NextLink>
     </article>
   );
 };

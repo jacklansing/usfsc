@@ -1,5 +1,6 @@
 export default {
   userBorderBox: true,
+  breakpoints: ['320px', '600px', '960px', '1280px', '1920px'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
@@ -47,6 +48,11 @@ export default {
       lineHeight: 1.75,
       letterSpacing: 0,
       opacity: 0.55,
+    },
+    body: {
+      lineHeight: 1.6,
+      opacity: 0.9,
+      fontSize: 3,
     },
     postPreview: {
       lineHeight: 1.8,

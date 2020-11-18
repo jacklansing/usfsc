@@ -32,8 +32,8 @@ const Home: React.FC<Props> = ({ posts }) => {
           Uncle Sam Figure Skating Club
         </h1>
         <Nav />
-        {posts.map((post) => (
-          <PostPreview post={post} key={post.published_at} />
+        {posts.map((post, idx) => (
+          <PostPreview post={post} idx={idx} key={post.published_at} />
         ))}
       </main>
     </div>

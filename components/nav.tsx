@@ -58,7 +58,7 @@ const Nav: React.FC<Props> = () => {
         flexFlow: 'row no-wrap',
         justifyContent: 'center',
         marginRight: 1,
-        marginTop: 4,
+        mt: 4,
         opacity: 0.6,
         textTransform: 'uppercase',
       }}

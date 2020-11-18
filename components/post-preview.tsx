@@ -5,13 +5,7 @@ import React from 'react';
 import { Box } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
 import NextLink from 'next/link';
-
-const dateFormatOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-};
+import formatPostDate from '../lib/utils/formatPostDate';
 
 interface Props {
   post: {
@@ -20,9 +14,10 @@ interface Props {
     published_at: string;
     slug: string;
   };
+  idx: number;
 }
 
-const PostPreview: React.FC<Props> = ({ post }) => {
+const PostPreview: React.FC<Props> = ({ post, idx }) => {
   const { title, published_at, body, slug } = post;
   const preview = body.slice(0, 250) + '...';
 
@@ -34,6 +29,7 @@ const PostPreview: React.FC<Props> = ({ post }) => {
         overflow: 'hidden',
         marginBottom: 3,
       }}
+      mt={idx === 0 ? 4 : ''}
     >
       <Box
         sx={{
@@ -52,10 +48,7 @@ const PostPreview: React.FC<Props> = ({ post }) => {
             variant: 'text.subtitle',
           }}
         >
-          {new Date(published_at).toLocaleDateString(
-            undefined,
-            dateFormatOptions,
-          )}
+          {formatPostDate(published_at)}
         </p>
       </Box>
       <ReactMarkdown
