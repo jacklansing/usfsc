@@ -6,14 +6,10 @@ import { Box } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
 import NextLink from 'next/link';
 import formatPostDate from '../lib/utils/formatPostDate';
+import { Post } from '../pages';
 
 interface Props {
-  post: {
-    title: string;
-    body: string;
-    published_at: string;
-    slug: string;
-  };
+  post: Post;
   idx: number;
 }
 

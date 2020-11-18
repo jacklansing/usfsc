@@ -1,0 +1,96 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import { GetStaticProps } from 'next';
+import React from 'react';
+import { useRouter } from 'next/router';
+import { Post } from '.';
+import { getAllPosts } from '../lib/fetchPosts';
+import formatPostDate from '../lib/utils/formatPostDate';
+import NextLink from 'next/link';
+import Nav from '../components/nav';
+
+interface Props {
+  posts: Post[];
+}
+
+const PostHistory: React.FC<Props> = ({ posts }) => {
+  const router = useRouter();
+
+  return (
+    <main>
+      <Nav />
+      <div
+        sx={{
+          width: ['33%'],
+          mx: 'auto',
+        }}
+      >
+        <h1
+          sx={{
+            variant: 'headings.h1',
+            width: '100%',
+            mx: 'auto',
+          }}
+        >
+          Post History
+        </h1>
+        <ul
+          sx={{
+            listStyle: 'none',
+            width: '100%',
+            mx: 'auto',
+          }}
+        >
+          {posts.map((post) => (
+            <li key={post.published_at}>
+              <NextLink
+                href={`/posts/${post.slug}?origin=/post-history`}
+                as={`/posts/${post.slug}`}
+              >
+                <a
+                  sx={{
+                    textDecoration: 'none',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <h2
+                    sx={{
+                      variant: 'headings.h3',
+                      pr: 4,
+                    }}
+                  >
+                    {post.title}
+                  </h2>
+                  <p
+                    sx={{
+                      variant: 'text.subtitle',
+                    }}
+                  >
+                    {formatPostDate(post.published_at)}
+                  </p>
+                </a>
+              </NextLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getAllPosts();
+  return {
+    props: {
+      // It's unlikely we'll have this many posts for a long time.
+      // But just in case let's not show any that are ancient.
+      // May revisit this in the future.
+      posts: posts.slice(0, 20),
+    },
+  };
+};
+
+export default PostHistory;
