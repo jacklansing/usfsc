@@ -42,16 +42,14 @@ const PostPreview: React.FC<Props> = ({ post }) => {
       >
         <h2
           sx={{
-            fontSize: 5,
+            variant: 'headings.h2',
           }}
         >
           {title}
         </h2>
         <p
           sx={{
-            opacity: 1,
-            color: 'gray',
-            fontSize: 2,
+            variant: 'text.subtitle',
           }}
         >
           {new Date(published_at).toLocaleDateString(
@@ -63,24 +61,13 @@ const PostPreview: React.FC<Props> = ({ post }) => {
       <ReactMarkdown
         source={preview}
         sx={{
-          lineHeight: 1.8,
-          opacity: 0.9,
-          fontSize: 3,
+          variant: 'text.postPreview',
         }}
       />
       <NextLink href={`/posts/${slug}`}>
         <a
           sx={{
-            textDecoration: 'none',
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            display: 'block',
-            width: 'fit-content',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            cursor: 'pointer',
-            fontWeight: 500,
-            fontSize: 3,
+            variant: 'text.postPreviewLink',
           }}
         >
           Read More
