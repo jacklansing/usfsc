@@ -61,7 +61,9 @@ const StepOne: React.FC<Props> = ({ step, setStep }) => {
           <Radio
             name="membershipType"
             value="individual-80"
-            defaultChecked={membershipType === undefined || 'individual-80'}
+            defaultChecked={
+              (membershipType === undefined || 'individual-80') as boolean
+            }
             ref={register}
           />
           Individual ($80.00)
