@@ -9,6 +9,7 @@ import formatPostDate from '../lib/utils/formatPostDate';
 import NextLink from 'next/link';
 import Nav from '../components/nav';
 import LayoutAnimated from '../components/utils/layout-animated';
+import { motion } from 'framer-motion';
 
 interface Props {
   posts: Post[];
@@ -20,7 +21,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
       <Nav />
       <div
         sx={{
-          width: ['33%'],
+          width: ['320px', '500px', '33%'],
           mx: 'auto',
         }}
       >
@@ -46,7 +47,9 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
                 href={`/posts/${post.slug}?origin=/post-history`}
                 as={`/posts/${post.slug}`}
               >
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
                   sx={{
                     textDecoration: 'none',
                     display: 'grid',
@@ -69,7 +72,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
                   >
                     {formatPostDate(post.published_at)}
                   </p>
-                </a>
+                </motion.a>
               </NextLink>
             </li>
           ))}

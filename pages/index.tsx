@@ -32,7 +32,7 @@ const Home: React.FC<Props> = ({ posts }) => {
       {/* <FloatingLogo /> */}
       <LayoutAnimated>
         <motion.h1
-          initial={{ y: 26 * 1.2 }}
+          initial={{ y: 64 }}
           animate={{ y: 0 }}
           sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
         >
@@ -43,7 +43,9 @@ const Home: React.FC<Props> = ({ posts }) => {
           <PostPreview post={post} idx={idx} key={post.published_at} />
         ))}
         <NextLink href={`/post-history`}>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
             sx={{
               variant: 'text.postPreviewLink',
               textAlign: 'center',
@@ -51,7 +53,7 @@ const Home: React.FC<Props> = ({ posts }) => {
             }}
           >
             Older Posts &rarr;
-          </a>
+          </motion.a>
         </NextLink>
       </LayoutAnimated>
     </div>
