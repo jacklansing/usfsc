@@ -300,6 +300,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
         )}
         <div sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
           <Button
+            variant="contained"
             onClick={(e) => {
               e.preventDefault();
               setStep(step - 1);

@@ -21,8 +21,9 @@ export default {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#07c',
-    secondary: '#30c',
+    primary: '#053c5e',
+    dark: '#001634',
+    secondary: '#db222a',
     muted: '#f6f6f6',
   },
   shadows: [
