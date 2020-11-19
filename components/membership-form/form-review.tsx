@@ -56,6 +56,8 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
         address_state: address.state,
         address_city: address.city,
         address_postal_code: address.postalCode,
+        primary_applicant_previous_membership:
+          primaryApplicant.previousMembershipNumber,
         primary_applicant_first_name: primaryApplicant.firstName,
         primary_applicant_last_name: primaryApplicant.lastName,
         primary_applicant_age: primaryApplicant.age,
@@ -65,6 +67,8 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
       if (secondaryApplicant.firstName.length > 0) {
         membershipData = {
           ...membershipData,
+          secondary_applicant_previous_membership:
+            secondaryApplicant.previousMembershipNumber || '',
           secondary_applicant_first_name: secondaryApplicant.firstName || '',
           secondary_applicant_last_anme: secondaryApplicant.lastName || '',
           secondary_applicant_age: secondaryApplicant.age || '',
@@ -123,6 +127,11 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
           </Button>
         </ReviewLabelContainer>
         <FieldPreview
+          label="Previous Membership Number"
+          value={primaryApplicant.previousMembershipNumber || 'N/A'}
+          divider
+        />
+        <FieldPreview
           label="First Name"
           value={primaryApplicant.firstName}
           divider
@@ -142,14 +151,15 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
         <ReviewSection>
           <ReviewLabelContainer>
             <h2 sx={{ variant: 'headings.h4' }}>Add'l Member Info</h2>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => setStep(2)}
-            >
+            <Button variant="contained" onClick={() => setStep(2)}>
               Edit
             </Button>
           </ReviewLabelContainer>
+          <FieldPreview
+            label="Previous Membership Number"
+            value={secondaryApplicant.previousMembershipNumber || 'N/A'}
+            divider
+          />
           <FieldPreview
             label="First Name"
             value={secondaryApplicant.firstName}

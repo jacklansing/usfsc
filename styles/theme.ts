@@ -121,6 +121,9 @@ export default {
       padding: 2,
       marginBottom: 1,
     },
+    label: {
+      pb: 1,
+    },
     input: {
       outline: 0,
       border: 1,

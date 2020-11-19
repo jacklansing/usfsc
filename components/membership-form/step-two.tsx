@@ -13,12 +13,14 @@ interface Props {
 }
 
 interface IFormInput {
+  previousMembershipNumber: string;
   firstName: string;
   lastName: string;
   age: string;
   dobDay: string;
   dobMonth: string;
   dobYear: string;
+  previousMembershipNumberSecondary: string;
   firstNameSecondary: string;
   lastNameSecondary: string;
   ageSecondary: string;
@@ -41,6 +43,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
     const dateOfBirth = `${dobMonth}/${dobDay}/${dobYear}`;
     let formatted = {
       primaryApplicant: {
+        previousMembershipNumber: data.previousMembershipNumber,
         firstName: data.firstName,
         lastName: data.lastName,
         age: data.age,
@@ -53,6 +56,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
       const dateOfBirthSecondary = `${dobMonthSecondary}/${dobDaySecondary}/${dobYearSecondary}`;
       //@ts-ignore
       formatted.secondaryApplicant = {
+        previousMembershipNumber: data.previousMembershipNumberSecondary,
         firstName: data.firstNameSecondary,
         lastName: data.lastNameSecondary,
         age: data.ageSecondary,
@@ -64,10 +68,17 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
     setStep(3);
   };
 
-  const { firstName, lastName, age, dateOfBirth } = state.data.primaryApplicant;
+  const {
+    previousMembershipNumber,
+    firstName,
+    lastName,
+    age,
+    dateOfBirth,
+  } = state.data.primaryApplicant;
   const [dobMonth, dobDay, dobYear] = dateOfBirth.split('/');
 
   const {
+    previousMembership: previousMembershipNumberSecondary,
     firstName: firstNameSecondary,
     lastName: lastNameSecondary,
     age: ageSecondary,
@@ -81,9 +92,23 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
   ] = dateOfBirthSecondary.split('/');
 
   return (
-    <Box>
+    <Box mb={5}>
       <Box as="form" onSubmit={handleSubmit(onSubmit)}>
         <h2 sx={{ variant: 'headings.h3' }}>Member Info</h2>
+        <FieldContainer>
+          <Label htmlFor="previousMembershipNumber">
+            Previous Membership Number
+          </Label>
+          <Input
+            name="previousMembershipNumber"
+            id="previousMembershipNumber"
+            placeholder="Your previous membership number, if you have one"
+            ref={register}
+            defaultValue={
+              previousMembershipNumber ? previousMembershipNumber : ''
+            }
+          />
+        </FieldContainer>
         <FieldContainer>
           <Label htmlFor="firstName">First Name</Label>
           <Input
@@ -134,6 +159,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                 name="dobMonth"
                 id="dobMonth"
                 ref={register}
+                placeholder="MM"
                 required
                 defaultValue={dobMonth ? dobMonth : ''}
               />
@@ -143,6 +169,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
               <Input
                 name="dobDay"
                 id="dobDay"
+                placeholder="DD"
                 ref={register}
                 required
                 defaultValue={dobDay ? dobDay : ''}
@@ -153,6 +180,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
               <Input
                 name="dobYear"
                 id="dobYear"
+                placeholder="YYYY"
                 ref={register}
                 required
                 defaultValue={dobYear ? dobYear : ''}
@@ -163,6 +191,22 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
         {applicationType !== 'family-100' ? null : (
           <div>
             <h2 sx={{ variant: 'headings.h3' }}>Add'l Member Info</h2>
+            <FieldContainer>
+              <Label htmlFor="previousMembershipNumberSecondary">
+                Previous Membership Number
+              </Label>
+              <Input
+                name="previousMembershipNumberSecondary"
+                id="previousMembershipNumberSecondary"
+                placeholder="Your previous membership number, if you have one"
+                ref={register}
+                defaultValue={
+                  previousMembershipNumberSecondary
+                    ? previousMembershipNumberSecondary
+                    : ''
+                }
+              />
+            </FieldContainer>
             <FieldContainer>
               <Label htmlFor="firstNameSecondary">First Name</Label>
               <Input
@@ -212,6 +256,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                   <Input
                     name="dobMonthSecondary"
                     id="dobMonthSecondary"
+                    placeholder="MM"
                     ref={register}
                     required
                     defaultValue={dobMonthSecondary ? dobMonthSecondary : ''}
@@ -222,6 +267,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                   <Input
                     name="dobDaySecondary"
                     id="dobDaySecondary"
+                    placeholder="DD"
                     ref={register}
                     required
                     defaultValue={dobDaySecondary ? dobDaySecondary : ''}
@@ -232,6 +278,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                   <Input
                     name="dobYearSecondary"
                     id="dobYearSecondary"
+                    placeholder="YYYY"
                     ref={register}
                     required
                     defaultValue={dobYearSecondary ? dobYearSecondary : ''}
