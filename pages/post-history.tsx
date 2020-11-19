@@ -3,7 +3,6 @@
 import { jsx } from 'theme-ui';
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { useRouter } from 'next/router';
 import { Post } from '.';
 import { getAllPosts } from '../lib/fetchPosts';
 import formatPostDate from '../lib/utils/formatPostDate';

@@ -6,6 +6,8 @@ import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';
 import updateAction from '../../lib/utils/updateAction';
 import FieldContainer from '../utils/field-container';
+import { motion } from 'framer-motion';
+import { formAnimate, formSpring } from '../../lib/utils/animations';
 
 interface Props {
   step: number;
@@ -50,7 +52,15 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
   } = formState.data.address;
 
   return (
-    <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+    <motion.form
+      key={step}
+      variants={formAnimate}
+      transition={formSpring}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <h2 sx={{ variant: 'headings.h3' }}>Member Address</h2>
       <FieldContainer>
         <Label htmlFor="addressPrimary">Adress Line 1</Label>
@@ -115,7 +125,7 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
           Next &rarr;
         </Button>
       </div>
-    </Box>
+    </motion.form>
   );
 };
 

@@ -8,6 +8,7 @@ import updateAction from '../../lib/utils/updateAction';
 import FieldPreview from './field-preview';
 
 import { loadStripe } from '@stripe/stripe-js';
+import { motion } from 'framer-motion';
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 );
@@ -105,7 +106,18 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
   };
 
   return (
-    <section sx={{ mb: 5 }}>
+    <motion.section
+      key={step}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{
+        type: 'spring',
+        damping: 10,
+        stiffness: 100,
+      }}
+      sx={{ mb: 5 }}
+    >
       <h1>Application Review</h1>
       <ReviewSection>
         <ReviewLabelContainer>
@@ -212,7 +224,7 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
           </Button>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

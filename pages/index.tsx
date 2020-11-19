@@ -8,7 +8,6 @@ import { getAllPosts } from '../lib/fetchPosts';
 import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import FloatingLogo from '../components/floating-logo';
-import { motion } from 'framer-motion';
 import LayoutAnimated from '../components/utils/layout-animated';
 
 export type Post = {

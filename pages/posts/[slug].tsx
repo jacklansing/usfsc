@@ -7,7 +7,6 @@ import NextLink from 'next/link';
 import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
 import formatPostDate from '../../lib/utils/formatPostDate';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
 import LayoutAnimated from '../../components/utils/layout-animated';
 
 interface Props {
