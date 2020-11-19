@@ -32,8 +32,8 @@ const Home: React.FC<Props> = ({ posts }) => {
       {/* <FloatingLogo /> */}
       <LayoutAnimated>
         <motion.h1
-          initial={{ y: 64 }}
-          animate={{ y: 0 }}
+          initial={{ y: 64, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
         >
           Uncle Sam Figure Skating Club
