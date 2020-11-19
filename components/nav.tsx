@@ -1,8 +1,9 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Link } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import NextLink from 'next/link';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface NavLinkProps {
   href: string;
@@ -10,40 +11,26 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
   <NextLink href={href}>
-    <Link
-      px={2}
-      py={1}
-      mx={2}
+    <motion.a
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.8 }}
       sx={{
+        px: 2,
+        py: 1,
+        mx: 3,
         fontSize: [null, null, 3, 3, 3, 4, 4],
         textDecoration: 'none',
-        color: 'black',
+        color: 'primary',
         letterSpacing: '1px',
         height: 'fit-content',
         fontWeight: 'bold',
         position: 'relative',
         cursor: 'pointer',
-        '::after': {
-          content: [null, null, "''"],
-          position: 'absolute',
-          bottom: -2,
-          left: 0,
-          width: '100%',
-          borderBottomStyle: 'solid',
-          borderBottomWidth: '4px',
-          borderColor: 'primary',
-          opacity: 0,
-          transition: 'all .222s ease',
-        },
-        ':hover': {
-          '::after': {
-            opacity: 1,
-          },
-        },
+        padding: 1,
       }}
     >
       {children}
-    </Link>
+    </motion.a>
   </NextLink>
 );
 
@@ -59,7 +46,6 @@ const Nav: React.FC<Props> = () => {
         justifyContent: 'center',
         marginRight: 1,
         mt: 4,
-        opacity: 0.6,
         textTransform: 'uppercase',
       }}
     >

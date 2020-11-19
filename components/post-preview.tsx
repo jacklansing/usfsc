@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import NextLink from 'next/link';
 import formatPostDate from '../lib/utils/formatPostDate';
 import { Post } from '../pages';
+import { motion } from 'framer-motion';
 
 interface Props {
   post: Post;
@@ -54,13 +55,15 @@ const PostPreview: React.FC<Props> = ({ post, idx }) => {
         }}
       />
       <NextLink href={`/posts/${slug}`}>
-        <a
+        <motion.a
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
           sx={{
             variant: 'text.postPreviewLink',
           }}
         >
           Read More
-        </a>
+        </motion.a>
       </NextLink>
       <Divider
         sx={{

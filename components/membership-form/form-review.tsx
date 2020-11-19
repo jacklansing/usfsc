@@ -107,7 +107,6 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
 
   return (
     <motion.section
-      key={step}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

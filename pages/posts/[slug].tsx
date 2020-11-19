@@ -8,6 +8,7 @@ import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
 import formatPostDate from '../../lib/utils/formatPostDate';
 import { useRouter } from 'next/router';
 import LayoutAnimated from '../../components/utils/layout-animated';
+import { motion } from 'framer-motion';
 
 interface Props {
   title: string;
@@ -54,14 +55,16 @@ const PostPage: React.FC<Props> = (props) => {
         <NextLink
           href={router.query.origin ? (router.query.origin as string) : '/'}
         >
-          <a
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
             sx={{
               variant: 'text.postPreviewLink',
               marginLeft: 0,
             }}
           >
             &larr; Back
-          </a>
+          </motion.a>
         </NextLink>
       </article>
     </LayoutAnimated>

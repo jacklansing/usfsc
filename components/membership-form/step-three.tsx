@@ -53,7 +53,6 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
 
   return (
     <motion.form
-      key={step}
       variants={formAnimate}
       transition={formSpring}
       initial="initial"

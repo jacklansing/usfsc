@@ -34,10 +34,10 @@ const MembershipForm: React.FC<Props> = ({}) => {
     <StateMachineProvider>
       <Progress max={100} value={Math.ceil((step - 1) * 33.33)} mb={4} />
       <AnimatePresence initial={false}>
-        <StepOne step={step} setStep={setStep} />
-        <StepTwo step={step} setStep={setStep} />
-        <StepThree step={step} setStep={setStep} />
-        <FormReview step={step} setStep={setStep} />
+        <StepOne step={step} setStep={setStep} key={1} />
+        <StepTwo step={step} setStep={setStep} key={2} />
+        <StepThree step={step} setStep={setStep} key={3} />
+        <FormReview step={step} setStep={setStep} key={4} />
       </AnimatePresence>
     </StateMachineProvider>
   );

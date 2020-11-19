@@ -96,7 +96,6 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
   return (
     <Box mb={5}>
       <motion.form
-        key={step}
         variants={formAnimate}
         transition={formSpring}
         initial="initial"

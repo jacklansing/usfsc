@@ -44,9 +44,10 @@ const StepOne: React.FC<Props> = ({ step, setStep }) => {
 
   const { membershipType } = state.data;
 
+  console.log('membership type is', membershipType);
+
   return (
     <motion.form
-      key={step}
       variants={formAnimate}
       transition={formSpring}
       initial="initial"
@@ -60,7 +61,7 @@ const StepOne: React.FC<Props> = ({ step, setStep }) => {
           <Radio
             name="membershipType"
             value="individual-80"
-            defaultChecked={membershipType === 'individual-80' || undefined}
+            defaultChecked={membershipType === undefined || 'individual-80'}
             ref={register}
           />
           Individual ($80.00)

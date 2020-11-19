@@ -9,6 +9,7 @@ import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import FloatingLogo from '../components/floating-logo';
 import LayoutAnimated from '../components/utils/layout-animated';
+import { motion } from 'framer-motion';
 
 export type Post = {
   title: string;
@@ -30,9 +31,13 @@ const Home: React.FC<Props> = ({ posts }) => {
       </Head>
       {/* <FloatingLogo /> */}
       <LayoutAnimated>
-        <h1 sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}>
+        <motion.h1
+          initial={{ y: 26 * 1.2 }}
+          animate={{ y: 0 }}
+          sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
+        >
           Uncle Sam Figure Skating Club
-        </h1>
+        </motion.h1>
         <Nav />
         {posts.map((post, idx) => (
           <PostPreview post={post} idx={idx} key={post.published_at} />
