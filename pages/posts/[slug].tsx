@@ -7,6 +7,8 @@ import NextLink from 'next/link';
 import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
 import formatPostDate from '../../lib/utils/formatPostDate';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import LayoutAnimated from '../../components/utils/layout-animated';
 
 interface Props {
   title: string;
@@ -18,7 +20,7 @@ const PostPage: React.FC<Props> = (props) => {
   const { title, body, published_at } = props;
   const router = useRouter();
   return (
-    <main>
+    <LayoutAnimated>
       <article
         sx={{
           maxWidth: 900,
@@ -63,7 +65,7 @@ const PostPage: React.FC<Props> = (props) => {
           </a>
         </NextLink>
       </article>
-    </main>
+    </LayoutAnimated>
   );
 };
 

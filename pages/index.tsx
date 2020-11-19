@@ -8,6 +8,8 @@ import { getAllPosts } from '../lib/fetchPosts';
 import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import FloatingLogo from '../components/floating-logo';
+import { motion } from 'framer-motion';
+import LayoutAnimated from '../components/utils/layout-animated';
 
 export type Post = {
   title: string;
@@ -27,8 +29,8 @@ const Home: React.FC<Props> = ({ posts }) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FloatingLogo />
-      <main>
+      {/* <FloatingLogo /> */}
+      <LayoutAnimated>
         <h1 sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}>
           Uncle Sam Figure Skating Club
         </h1>
@@ -47,7 +49,7 @@ const Home: React.FC<Props> = ({ posts }) => {
             Older Posts &rarr;
           </a>
         </NextLink>
-      </main>
+      </LayoutAnimated>
     </div>
   );
 };

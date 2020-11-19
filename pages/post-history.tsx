@@ -9,16 +9,15 @@ import { getAllPosts } from '../lib/fetchPosts';
 import formatPostDate from '../lib/utils/formatPostDate';
 import NextLink from 'next/link';
 import Nav from '../components/nav';
+import LayoutAnimated from '../components/utils/layout-animated';
 
 interface Props {
   posts: Post[];
 }
 
 const PostHistory: React.FC<Props> = ({ posts }) => {
-  const router = useRouter();
-
   return (
-    <main>
+    <LayoutAnimated>
       <Nav />
       <div
         sx={{
@@ -77,7 +76,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
           ))}
         </ul>
       </div>
-    </main>
+    </LayoutAnimated>
   );
 };
 

@@ -1,10 +1,13 @@
 import { Theme, ThemeProvider } from 'theme-ui';
+import { AnimatePresence } from 'framer-motion';
 import theme from '../styles/theme';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <ThemeProvider theme={theme as Theme}>
-      <Component {...pageProps} />
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
     </ThemeProvider>
   );
 }
