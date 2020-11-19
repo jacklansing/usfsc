@@ -5,6 +5,7 @@ import React from 'react';
 import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';
 import updateAction from '../../lib/utils/updateAction';
+import FieldContainer from '../utils/field-container';
 
 interface Props {
   step: number;
@@ -38,7 +39,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
   const onSubmit = (data: IFormInput) => {
     const { dobMonth, dobDay, dobYear } = data;
     const dateOfBirth = `${dobMonth}/${dobDay}/${dobYear}`;
-    const formatted = {
+    let formatted = {
       primaryApplicant: {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -67,160 +68,194 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
   const [dobMonth, dobDay, dobYear] = dateOfBirth.split('/');
 
   const {
-    firstNameSecondary,
-    lastNameSecondary,
-    ageSecondary,
-    dateOfBirthSecondary,
-  } = state.data.primaryApplicant;
+    firstName: firstNameSecondary,
+    lastName: lastNameSecondary,
+    age: ageSecondary,
+    dateOfBirth: dateOfBirthSecondary,
+  } = state.data.secondaryApplicant;
 
   const [
     dobMonthSecondary,
     dobDaySecondary,
     dobYearSecondary,
-  ] = dateOfBirth.split('/');
+  ] = dateOfBirthSecondary.split('/');
 
   return (
-    <div>
+    <Box>
       <Box as="form" onSubmit={handleSubmit(onSubmit)}>
-        <Label htmlFor="firstName">First Name</Label>
-        <Input
-          name="firstName"
-          id="firstName"
-          ref={register}
-          required
-          defaultValue={firstName ? firstName : ''}
-        />
-        <Label htmlFor="lastName">Last Name</Label>
-        <Input
-          name="lastName"
-          id="lastName"
-          ref={register}
-          required
-          defaultValue={lastName ? lastName : ''}
-        />
-        <Label htmlFor="age">Age</Label>
-        <Input
-          name="age"
-          id="age"
-          ref={register}
-          required
-          defaultValue={age ? age : ''}
-        />
+        <h2 sx={{ variant: 'headings.h3' }}>Member Info</h2>
+        <FieldContainer>
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            name="firstName"
+            id="firstName"
+            ref={register}
+            required
+            defaultValue={firstName ? firstName : ''}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            name="lastName"
+            id="lastName"
+            ref={register}
+            required
+            defaultValue={lastName ? lastName : ''}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <Label htmlFor="age">Age</Label>
+          <Input
+            name="age"
+            id="age"
+            ref={register}
+            required
+            defaultValue={age ? age : ''}
+          />
+        </FieldContainer>
         <fieldset
           sx={{
             border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            mt: 4,
-            '& input': {
-              mr: 3,
-            },
+            padding: 0,
+            margin: 0,
           }}
         >
           <legend>Date of Birth</legend>
-          <Label htmlFor="dobMonth">Month</Label>
-          <Input
-            name="dobMonth"
-            id="dobMonth"
-            ref={register}
-            required
-            defaultValue={dobMonth ? dobMonth : ''}
-          />
-          <Label htmlFor="dobDay">Day</Label>
-          <Input
-            name="dobDay"
-            id="dobDay"
-            ref={register}
-            required
-            defaultValue={dobDay ? dobDay : ''}
-          />
-          <Label htmlFor="dobYear">Year</Label>
-          <Input
-            name="dobYear"
-            id="dobYear"
-            ref={register}
-            required
-            defaultValue={dobYear ? dobYear : ''}
-          />
+          <div
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+            }}
+          >
+            <FieldContainer>
+              <Label htmlFor="dobMonth">Month</Label>
+              <Input
+                name="dobMonth"
+                id="dobMonth"
+                ref={register}
+                required
+                defaultValue={dobMonth ? dobMonth : ''}
+              />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="dobDay">Day</Label>
+              <Input
+                name="dobDay"
+                id="dobDay"
+                ref={register}
+                required
+                defaultValue={dobDay ? dobDay : ''}
+              />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="dobYear">Year</Label>
+              <Input
+                name="dobYear"
+                id="dobYear"
+                ref={register}
+                required
+                defaultValue={dobYear ? dobYear : ''}
+              />
+            </FieldContainer>
+          </div>
         </fieldset>
         {applicationType !== 'family-100' ? null : (
           <div>
-            <Label htmlFor="firstNameSecondary">First Name</Label>
-            <Input
-              name="firstNameSecondary"
-              id="firstNameSecondary"
-              ref={register}
-              required
-              defaultValue={firstNameSecondary ? firstNameSecondary : ''}
-            />
-            <Label htmlFor="lastNameSecondary">Last Name</Label>
-            <Input
-              name="lastNameSecondary"
-              id="lastNameSecondary"
-              ref={register}
-              required
-              defaultValue={lastNameSecondary ? lastNameSecondary : ''}
-            />
-            <Label htmlFor="ageSecondary">Age</Label>
-            <Input
-              name="ageSecondary"
-              id="ageSecondary"
-              ref={register}
-              required
-              defaultValue={ageSecondary ? ageSecondary : ''}
-            />
+            <h2 sx={{ variant: 'headings.h3' }}>Add'l Member Info</h2>
+            <FieldContainer>
+              <Label htmlFor="firstNameSecondary">First Name</Label>
+              <Input
+                name="firstNameSecondary"
+                id="firstNameSecondary"
+                ref={register}
+                required
+                defaultValue={firstNameSecondary ? firstNameSecondary : ''}
+              />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="lastNameSecondary">Last Name</Label>
+              <Input
+                name="lastNameSecondary"
+                id="lastNameSecondary"
+                ref={register}
+                required
+                defaultValue={lastNameSecondary ? lastNameSecondary : ''}
+              />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="ageSecondary">Age</Label>
+              <Input
+                name="ageSecondary"
+                id="ageSecondary"
+                ref={register}
+                required
+                defaultValue={ageSecondary ? ageSecondary : ''}
+              />
+            </FieldContainer>
             <fieldset
               sx={{
                 border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                mt: 4,
-                '& input': {
-                  mr: 3,
-                },
+                padding: 0,
+                margin: 0,
               }}
             >
               <legend>Date of Birth</legend>
-              <Label htmlFor="dobMonthSecondary">Month</Label>
-              <Input
-                name="dobMonthSecondary"
-                id="dobMonthSecondary"
-                ref={register}
-                required
-                defaultValue={dobMonthSecondary ? dobMonthSecondary : ''}
-              />
-              <Label htmlFor="dobDaySecondary">Day</Label>
-              <Input
-                name="dobDaySecondary"
-                id="dobDaySecondary"
-                ref={register}
-                required
-                defaultValue={dobDaySecondary ? dobDaySecondary : ''}
-              />
-              <Label htmlFor="dobYearSecondary">Year</Label>
-              <Input
-                name="dobYearSecondary"
-                id="dobYearSecondary"
-                ref={register}
-                required
-                defaultValue={dobYearSecondary ? dobYearSecondary : ''}
-              />
+              <div
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                }}
+              >
+                <FieldContainer>
+                  <Label htmlFor="dobMonthSecondary">Month</Label>
+                  <Input
+                    name="dobMonthSecondary"
+                    id="dobMonthSecondary"
+                    ref={register}
+                    required
+                    defaultValue={dobMonthSecondary ? dobMonthSecondary : ''}
+                  />
+                </FieldContainer>
+                <FieldContainer>
+                  <Label htmlFor="dobDaySecondary">Day</Label>
+                  <Input
+                    name="dobDaySecondary"
+                    id="dobDaySecondary"
+                    ref={register}
+                    required
+                    defaultValue={dobDaySecondary ? dobDaySecondary : ''}
+                  />
+                </FieldContainer>
+                <FieldContainer>
+                  <Label htmlFor="dobYearSecondary">Year</Label>
+                  <Input
+                    name="dobYearSecondary"
+                    id="dobYearSecondary"
+                    ref={register}
+                    required
+                    defaultValue={dobYearSecondary ? dobYearSecondary : ''}
+                  />
+                </FieldContainer>
+              </div>
             </fieldset>
           </div>
         )}
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            setStep(step - 1);
-          }}
-        >
-          Back
-        </Button>
-        <Button type="submit" variant="contained">
-          Next
-        </Button>
+        <div sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              setStep(step - 1);
+            }}
+          >
+            &larr; Back
+          </Button>
+          <Button type="submit" variant="contained">
+            Next &rarr;
+          </Button>
+        </div>
       </Box>
-    </div>
+    </Box>
   );
 };
 

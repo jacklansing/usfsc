@@ -5,6 +5,7 @@ import React from 'react';
 import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';
 import updateAction from '../../lib/utils/updateAction';
+import FieldContainer from '../utils/field-container';
 
 interface Props {
   step: number;
@@ -50,56 +51,70 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
 
   return (
     <Box as="form" onSubmit={handleSubmit(onSubmit)}>
-      <Label htmlFor="addressPrimary">Adress Line 1</Label>
-      <Input
-        name="addressPrimary"
-        id="addressPrimary"
-        ref={register}
-        required
-        defaultValue={addressPrimary ? addressPrimary : ''}
-      />
-      <Label htmlFor="addressSecondary">Adress Line 2</Label>
-      <Input
-        name="addressSecondary"
-        id="addressSecondary"
-        ref={register}
-        defaultValue={addressSecondary ? addressSecondary : ''}
-      />
-      <Label htmlFor="city">City</Label>
-      <Input
-        name="city"
-        id="city"
-        ref={register}
-        required
-        defaultValue={city ? city : ''}
-      />
-      <Label htmlFor="state">State</Label>
-      <Input
-        name="state"
-        id="state"
-        ref={register}
-        required
-        defaultValue={state ? state : ''}
-      />
-      <Label htmlFor="postalCode">Postal Code</Label>
-      <Input
-        name="postalCode"
-        id="postalCode"
-        ref={register}
-        required
-        defaultValue={postalCode ? postalCode : ''}
-      />
-      <Button
-        onClick={(e) => {
-          e.preventDefault();
-          setStep(step - 1);
-        }}
-      >
-        Back
-      </Button>
-      <Button type="submit" variant="contained">
-        Next
-      </Button>
+      <h2 sx={{ variant: 'headings.h3' }}>Member Address</h2>
+      <FieldContainer>
+        <Label htmlFor="addressPrimary">Adress Line 1</Label>
+        <Input
+          name="addressPrimary"
+          id="addressPrimary"
+          ref={register}
+          required
+          defaultValue={addressPrimary ? addressPrimary : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="addressSecondary">Adress Line 2</Label>
+        <Input
+          name="addressSecondary"
+          id="addressSecondary"
+          ref={register}
+          defaultValue={addressSecondary ? addressSecondary : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="city">City</Label>
+        <Input
+          name="city"
+          id="city"
+          ref={register}
+          required
+          defaultValue={city ? city : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="state">State</Label>
+        <Input
+          name="state"
+          id="state"
+          ref={register}
+          required
+          defaultValue={state ? state : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="postalCode">Postal Code</Label>
+        <Input
+          name="postalCode"
+          id="postalCode"
+          ref={register}
+          required
+          defaultValue={postalCode ? postalCode : ''}
+        />
+      </FieldContainer>
+      <div sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+        <Button
+          variant="contained"
+          onClick={(e) => {
+            e.preventDefault();
+            setStep(step - 1);
+          }}
+        >
+          &larr; Back
+        </Button>
+        <Button type="submit" variant="contained">
+          Next &rarr;
+        </Button>
+      </div>
     </Box>
   );
 };

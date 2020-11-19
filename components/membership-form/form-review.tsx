@@ -1,3 +1,6 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { Box, jsx } from 'theme-ui';
 import { useStateMachine } from 'little-state-machine';
 import React, { FormEvent, useState } from 'react';
 import { Button } from 'theme-ui';
@@ -98,26 +101,27 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
   };
 
   return (
-    <section>
-      <div>
-        <div>
-          <h4>Membership Type</h4>
+    <section sx={{ mb: 5 }}>
+      <h1>Application Review</h1>
+      <ReviewSection>
+        <ReviewLabelContainer>
+          <h2 sx={{ variant: 'headings.h4' }}>Membership Type</h2>
           <Button variant="contained" onClick={() => setStep(1)}>
             Edit
           </Button>
-        </div>
+        </ReviewLabelContainer>
         <FieldPreview
           label="Membership"
           value={formatMembershipType(state.data.membershipType)}
         />
-      </div>
-      <div>
-        <div>
-          <h4>Member Info</h4>
+      </ReviewSection>
+      <ReviewSection>
+        <ReviewLabelContainer>
+          <h2 sx={{ variant: 'headings.h4' }}>Member Info</h2>
           <Button variant="contained" onClick={() => setStep(2)}>
             Edit
           </Button>
-        </div>
+        </ReviewLabelContainer>
         <FieldPreview
           label="First Name"
           value={primaryApplicant.firstName}
@@ -133,11 +137,11 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
           label="Date of Birth"
           value={primaryApplicant.dateOfBirth}
         />
-      </div>
+      </ReviewSection>
       {!secondaryApplicant.firstName ? null : (
-        <div>
-          <div>
-            <h4>Add'l Member Info</h4>
+        <ReviewSection>
+          <ReviewLabelContainer>
+            <h2 sx={{ variant: 'headings.h4' }}>Add'l Member Info</h2>
             <Button
               variant="contained"
               color="primary"
@@ -145,7 +149,7 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
             >
               Edit
             </Button>
-          </div>
+          </ReviewLabelContainer>
           <FieldPreview
             label="First Name"
             value={secondaryApplicant.firstName}
@@ -161,15 +165,15 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
             label="Date of Birth"
             value={secondaryApplicant.dateOfBirth}
           />
-        </div>
+        </ReviewSection>
       )}
-      <div>
-        <div>
-          <h4>Address</h4>
+      <ReviewSection>
+        <ReviewLabelContainer>
+          <h2 sx={{ variant: 'headings.h4' }}>Address</h2>
           <Button variant="contained" onClick={() => setStep(3)}>
             Edit
           </Button>
-        </div>
+        </ReviewLabelContainer>
         <FieldPreview
           label="Address Line 1"
           value={address.addressPrimary}
@@ -183,21 +187,54 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
         <FieldPreview label="City" value={address.city} divider />
         <FieldPreview label="State" value={address.state} divider />
         <FieldPreview label="Postal Code" value={address.postalCode} />
-      </div>
-      <Button
-        type="button"
-        variant="contained"
-        onClick={() => setStep(step - 1)}
-      >
-        back
-      </Button>
-      <form onSubmit={(e) => finalSubmit(e)}>
-        <Button type="submit" variant="contained">
-          Final Submit Test
+      </ReviewSection>
+      <div sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button
+          type="button"
+          variant="contained"
+          onClick={() => setStep(step - 1)}
+        >
+          &larr; Back
         </Button>
-      </form>
+        <form onSubmit={(e) => finalSubmit(e)}>
+          <Button type="submit" variant="contained">
+            Submit Application
+          </Button>
+        </form>
+      </div>
     </section>
   );
 };
+
+const ReviewLabelContainer: React.FC<{}> = ({ children }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexFlow: 'row no-wrap',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flex: '0, 0 50%',
+    }}
+  >
+    {children}
+  </Box>
+);
+
+const ReviewSection: React.FC<{}> = ({ children }) => (
+  <Box
+    sx={{
+      padding: 3,
+      backgroundColor: '#fff',
+      border: 1,
+      borderRadius: 1,
+      marginBottom: [2, 3, 4],
+      boxShadow: 2,
+      minWidth: '320px',
+      maxWidth: '1300px',
+    }}
+  >
+    {children}
+  </Box>
+);
 
 export default FormReview;

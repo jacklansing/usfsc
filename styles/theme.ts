@@ -116,11 +116,65 @@ export default {
       fontSize: [1, 1, 1, 1, 1, 2],
     },
   },
+  forms: {
+    fieldContainer: {
+      padding: 2,
+      marginBottom: 1,
+    },
+    input: {
+      outline: 0,
+      border: 1,
+      transition: 'all 0.2s',
+      borderRadius: 1,
+      '&:focus': {
+        zIndex: 1,
+        background: 'transparent',
+        boxShadow: `0 0 0 2px #07c`,
+      },
+    },
+    radio: {
+      '&:hover': {
+        backgroundColor: '#07c7',
+      },
+    },
+  },
+  buttons: {
+    contained: {
+      border: 'none',
+      display: 'inline-block',
+      cursor: 'pointer',
+      minWidth: '100px',
+      padding: 2,
+      textAlign: 'center',
+      textDecoration: 'none',
+      fontFamily: 'monospace',
+      borderRadius: 0,
+      color: 'white',
+      boxShadow: 1,
+      backgroundColor: 'primary',
+      transition: 'all .222s cubic-bezier(0.4, 0, 1, 1)',
+      '&:hover': {
+        backgroundColor: 'dark',
+        boxShadow: 2,
+        transform: 'translateY(-1px)',
+      },
+      '&:focus': {
+        backgroundColor: 'dark',
+        boxShadow: 2,
+      },
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
+    },
+    hr: {
+      height: '1px',
+      background: 'lightgray',
+      opacity: 0.6,
+      border: 'inherit',
     },
     h1: {
       color: 'text',

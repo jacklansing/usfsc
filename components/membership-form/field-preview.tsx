@@ -12,8 +12,15 @@ interface Props {
 const FieldPreview: React.FC<Props> = ({ label, value, divider = false }) => {
   return (
     <React.Fragment>
-      <div>
-        <p>{label}</p>
+      <div
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <p>
+          <strong>{label}</strong>
+        </p>
         <p>{value}</p>
       </div>
       {divider ? <Divider /> : null}

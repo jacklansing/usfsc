@@ -11,7 +11,7 @@ const Membership: React.FC<Props> = ({}) => {
     <main>
       <div
         sx={{
-          width: '33%',
+          width: ['318', '500px', '600px', '600px'],
           mx: 'auto',
           mt: 5,
         }}
