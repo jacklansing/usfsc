@@ -25,7 +25,7 @@ const News: React.FC<Props> = ({ posts }) => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>News | Uncle Sam Figure Skating Club</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LayoutAnimated>
@@ -40,7 +40,7 @@ const News: React.FC<Props> = ({ posts }) => {
             transition={{ delay: 0.2 }}
             sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
           >
-            Uncle Sam Figure Skating Club
+            Uncle Sam FSC News
           </motion.h1>
         </Box>
         <Nav />

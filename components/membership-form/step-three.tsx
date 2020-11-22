@@ -110,17 +110,36 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
           defaultValue={postalCode ? postalCode : ''}
         />
       </FieldContainer>
-      <div sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+      <div
+        sx={{
+          width: ['75%', '65%', '50%', 'auto'],
+          mx: ['auto', null, null, 'inherit'],
+          display: 'flex',
+          justifyContent: 'space-between',
+          mt: 3,
+          flexFlow: 'row wrap-reverse',
+          gap: 2,
+        }}
+      >
         <Button
           variant="contained"
           onClick={(e) => {
             e.preventDefault();
             setStep(step - 1);
           }}
+          sx={{
+            flex: ['0 1 100%', null, null, '0 1 33%'],
+          }}
         >
           &larr; Back
         </Button>
-        <Button type="submit" variant="contained">
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{
+            flex: ['0 1 100%', null, null, '0 1 33%'],
+          }}
+        >
           Next &rarr;
         </Button>
       </div>

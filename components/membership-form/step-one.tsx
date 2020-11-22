@@ -102,9 +102,28 @@ const StepOne: React.FC<Props> = ({ step, setStep }) => {
           Professional ($70.00)
         </Label>
       </FieldContainer>
-      <Button type="submit" variant="contained" mt={3}>
-        Next &rarr;
-      </Button>
+      <div
+        sx={{
+          width: ['75%', '65%', '50%', 'auto'],
+          mx: ['auto', null, null, 'inherit'],
+          display: 'flex',
+          justifyContent: 'space-between',
+          mt: 3,
+          flexFlow: 'row wrap-reverse',
+          gap: 2,
+        }}
+      >
+        <Button
+          type="submit"
+          variant="contained"
+          mt={3}
+          sx={{
+            flex: ['0 1 100%', null, null, '0 1 33%'],
+          }}
+        >
+          Next &rarr;
+        </Button>
+      </div>
     </motion.form>
   );
 };

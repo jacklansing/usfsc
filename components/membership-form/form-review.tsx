@@ -209,16 +209,40 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
         <FieldPreview label="State" value={address.state} divider />
         <FieldPreview label="Postal Code" value={address.postalCode} />
       </ReviewSection>
-      <div sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div
+        sx={{
+          width: ['75%', '65%', '50%', 'auto'],
+          mx: ['auto', null, null, 'inherit'],
+          display: 'flex',
+          justifyContent: 'space-between',
+          mt: 3,
+          flexFlow: 'row wrap-reverse',
+          gap: 2,
+        }}
+      >
         <Button
           type="button"
           variant="contained"
           onClick={() => setStep(step - 1)}
+          sx={{
+            flex: ['0 1 100%', null, null, '0 1 33%'],
+          }}
         >
           &larr; Back
         </Button>
-        <form onSubmit={(e) => finalSubmit(e)}>
-          <Button type="submit" variant="contained">
+        <form
+          onSubmit={(e) => finalSubmit(e)}
+          sx={{
+            display: 'contents',
+          }}
+        >
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              flex: ['0 1 100%', null, null, '0 1 33%'],
+            }}
+          >
             Submit Application
           </Button>
         </form>

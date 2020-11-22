@@ -17,6 +17,7 @@ const MembershipApplication: React.FC<Props> = ({}) => {
           width: ['318', '500px', '600px', '600px'],
           mx: 'auto',
           mt: 3,
+          padding: [3, , , 0],
         }}
       >
         <div

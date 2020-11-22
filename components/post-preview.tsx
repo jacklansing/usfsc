@@ -25,6 +25,7 @@ const PostPreview: React.FC<Props> = ({ post, idx }) => {
         maxWidth: '90ch',
         overflow: 'hidden',
         marginBottom: 3,
+        textAlign: ['center', null, 'start'],
       }}
       mt={idx === 0 ? 4 : ''}
     >

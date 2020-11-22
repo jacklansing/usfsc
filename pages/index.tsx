@@ -85,6 +85,7 @@ const Landing: React.FC<Props> = ({}) => {
                 <motion.a
                   whileHover={{ scale: 1.2, backgroundColor: '#000' }}
                   whileTap={{ scale: 0.8 }}
+                  tabIndex={1}
                   sx={{
                     variant: 'text.landingButtonLink',
                     width: 'fit-content',
@@ -98,6 +99,7 @@ const Landing: React.FC<Props> = ({}) => {
               initial={{ x: 64, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1 }}
+              tabIndex={1}
             >
               <NextLink href={`/membership`}>
                 <motion.a
