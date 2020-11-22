@@ -4,14 +4,29 @@ import { jsx } from 'theme-ui';
 import React from 'react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
-import LayoutAnimated from '../components/utils/layout-animated';
+import { useRouter } from 'next/router';
 
 interface Props {}
 
 const Landing: React.FC<Props> = ({}) => {
-  console.log('render');
+  const router = useRouter();
+
+  const handleKeyboard = (
+    e: React.KeyboardEvent<HTMLAnchorElement>,
+    destination: string,
+  ) => {
+    if (e.key === 'Enter') {
+      router.push(destination);
+    }
+  };
+
   return (
-    <LayoutAnimated>
+    <motion.main
+      initial="initial"
+      exit={{ opacity: 0 }}
+      animate="animate"
+      transition={{ delay: 0.2 }}
+    >
       <div
         sx={{
           height: '100vh',
@@ -85,6 +100,7 @@ const Landing: React.FC<Props> = ({}) => {
                 <motion.a
                   whileHover={{ scale: 1.2, backgroundColor: '#000' }}
                   whileTap={{ scale: 0.8 }}
+                  onKeyDown={(e) => handleKeyboard(e, '/news')}
                   tabIndex={1}
                   sx={{
                     variant: 'text.landingButtonLink',
@@ -99,12 +115,13 @@ const Landing: React.FC<Props> = ({}) => {
               initial={{ x: 64, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1 }}
-              tabIndex={1}
             >
               <NextLink href={`/membership`}>
                 <motion.a
                   whileHover={{ scale: 1.2, backgroundColor: '#000' }}
                   whileTap={{ scale: 0.8 }}
+                  onKeyDown={(e) => handleKeyboard(e, '/membership')}
+                  tabIndex={1}
                   sx={{
                     variant: 'text.landingButtonLink',
                     width: 'fit-content',
@@ -117,7 +134,7 @@ const Landing: React.FC<Props> = ({}) => {
           </div>
         </div>
       </div>
-    </LayoutAnimated>
+    </motion.main>
   );
 };
 
