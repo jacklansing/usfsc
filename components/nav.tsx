@@ -48,7 +48,7 @@ const Nav: React.FC<Props> = () => {
         textTransform: 'uppercase',
       }}
     >
-      <NavLink href="/">Home</NavLink>
+      <NavLink href="/news">Home</NavLink>
       <NavLink href="/membership">Membership</NavLink>
     </nav>
   );

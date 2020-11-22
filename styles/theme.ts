@@ -72,6 +72,21 @@ export default {
       fontWeight: 500,
       fontSize: 3,
     },
+    landingButtonLink: {
+      textDecoration: 'none',
+      letterSpacing: '1px',
+      display: 'block',
+      cursor: 'pointer',
+      fontWeight: 500,
+      fontSize: 3,
+      color: 'white',
+      backgroundColor: '#00011',
+      textAlign: 'center',
+      px: 4,
+      py: 2,
+      border: '.4px solid #fff',
+      borderRadius: 2,
+    },
   },
   headings: {
     h1: {

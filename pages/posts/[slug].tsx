@@ -53,7 +53,7 @@ const PostPage: React.FC<Props> = (props) => {
           }}
         />
         <NextLink
-          href={router.query.origin ? (router.query.origin as string) : '/'}
+          href={router.query.origin ? (router.query.origin as string) : '/news'}
         >
           <motion.a
             whileHover={{ scale: 1.2 }}
