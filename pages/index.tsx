@@ -37,6 +37,7 @@ const Landing: React.FC<Props> = ({}) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
             src={'/unc-sam-logo.png'}
+            alt="club logo"
             sx={{
               height: '250px',
             }}
