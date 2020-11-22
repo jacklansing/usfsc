@@ -20,7 +20,6 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
         mx: 3,
         fontSize: [null, null, 3, 3, 3, 4, 4],
         textDecoration: 'none',
-        color: 'primary',
         letterSpacing: '1px',
         height: 'fit-content',
         fontWeight: 'bold',

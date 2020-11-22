@@ -29,11 +29,11 @@ const Home: React.FC<Props> = ({ posts }) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <FloatingLogo /> */}
       <LayoutAnimated>
         <motion.h1
           initial={{ y: 64, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
           sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
         >
           Uncle Sam Figure Skating Club
