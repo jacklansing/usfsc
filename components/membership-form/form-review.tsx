@@ -9,6 +9,7 @@ import FieldPreview from './field-preview';
 
 import { loadStripe } from '@stripe/stripe-js';
 import { motion } from 'framer-motion';
+import getMembershipSKU from '../../lib/utils/getMembershipSKU';
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 );
@@ -44,11 +45,13 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
   } = state.data;
 
   const finalSubmit = async (e: FormEvent) => {
+    const membership_type = membershipType.split('-')[0];
+
     try {
       e.preventDefault();
       // Submit membership application without payment received
       let membershipData: any = {
-        membership_type: membershipType.split('-')[0],
+        membership_type,
         phone: contactInfo.phone,
         email: contactInfo.email,
         address_line_one: address.addressPrimary,
@@ -70,7 +73,7 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
           secondary_applicant_previous_membership:
             secondaryApplicant.previousMembershipNumber || '',
           secondary_applicant_first_name: secondaryApplicant.firstName || '',
-          secondary_applicant_last_anme: secondaryApplicant.lastName || '',
+          secondary_applicant_last_name: secondaryApplicant.lastName || '',
           secondary_applicant_age: secondaryApplicant.age || '',
           secondary_applicant_dob: secondaryApplicant.dateOfBirth || '',
         };
@@ -86,11 +89,15 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
           body: JSON.stringify(membershipData),
         },
       );
+
       const resData = await res.json();
       const stripe = await stripePromise;
+
+      const membershipSKU = getMembershipSKU(membership_type);
+
       const { error } = await stripe.redirectToCheckout({
         mode: 'payment',
-        lineItems: [{ price: 'price_1HHxlPIKEd7Nl0FwtfvssiOg', quantity: 1 }],
+        lineItems: [{ price: membershipSKU, quantity: 1 }],
         successUrl: `${window.location.origin}/success`,
         cancelUrl: `${window.location.origin}/canceled`,
         clientReferenceId: resData.id.toString(),
