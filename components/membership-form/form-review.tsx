@@ -23,7 +23,7 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
 
   const { state } = useStateMachine(updateAction);
 
-  if (step !== 4) {
+  if (step !== 5) {
     return null;
   }
 
@@ -40,11 +40,8 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
     secondaryApplicant,
     address,
     membershipType,
+    contactInfo,
   } = state.data;
-
-  if (step !== 4) {
-    return null;
-  }
 
   const finalSubmit = async (e: FormEvent) => {
     try {
@@ -52,6 +49,8 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
       // Submit membership application without payment received
       let membershipData: any = {
         membership_type: membershipType.split('-')[0],
+        phone: contactInfo.phone,
+        email: contactInfo.email,
         address_line_one: address.addressPrimary,
         address_line_two: address.addressSecondary || '',
         address_state: address.state,
@@ -190,8 +189,18 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
       )}
       <ReviewSection>
         <ReviewLabelContainer>
-          <h2 sx={{ variant: 'headings.h4' }}>Address</h2>
+          <h2 sx={{ variant: 'headings.h4' }}>Contact Info</h2>
           <Button variant="contained" onClick={() => setStep(3)}>
+            Edit
+          </Button>
+        </ReviewLabelContainer>
+        <FieldPreview label="Email Address" value={contactInfo.email} divider />
+        <FieldPreview label="Phone Number" value={contactInfo.phone} />
+      </ReviewSection>
+      <ReviewSection>
+        <ReviewLabelContainer>
+          <h2 sx={{ variant: 'headings.h4' }}>Member Address</h2>
+          <Button variant="contained" onClick={() => setStep(4)}>
             Edit
           </Button>
         </ReviewLabelContainer>

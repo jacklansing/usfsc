@@ -44,8 +44,6 @@ const StepOne: React.FC<Props> = ({ step, setStep }) => {
 
   const { membershipType } = state.data;
 
-  console.log('membership type is', membershipType);
-
   return (
     <motion.form
       variants={formAnimate}

@@ -15,30 +15,41 @@ interface Props {
 }
 
 interface IFormInput {
-  email: string;
-  phone: string;
+  addressPrimary: string;
+  addressSecondary: string;
+  city: string;
+  state: string;
+  postalCode: string;
 }
 
-const StepThree: React.FC<Props> = ({ step, setStep }) => {
+const StepFour: React.FC<Props> = ({ step, setStep }) => {
   const { register, handleSubmit } = useForm();
   const { action, state: formState } = useStateMachine(updateAction);
 
-  if (step !== 3) {
+  if (step !== 4) {
     return null;
   }
 
   const onSubmit = (data: IFormInput) => {
-    const { email, phone } = data;
     action({
-      contactInfo: {
-        email,
-        phone,
+      address: {
+        addressPrimary: data.addressPrimary,
+        addressSecondary: data.addressSecondary,
+        city: data.city,
+        state: data.state,
+        postalCode: data.postalCode,
       },
     });
-    setStep(4);
+    setStep(5);
   };
 
-  const { email, phone } = formState.data.contactInfo;
+  const {
+    addressPrimary,
+    addressSecondary,
+    city,
+    state,
+    postalCode,
+  } = formState.data.address;
 
   return (
     <motion.form
@@ -49,27 +60,54 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
       exit="exit"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 sx={{ variant: 'headings.h3' }}>Contact Info</h2>
+      <h2 sx={{ variant: 'headings.h3' }}>Member Address</h2>
       <FieldContainer>
-        <Label htmlFor="email">Email Address</Label>
+        <Label htmlFor="addressPrimary">Adress Line 1</Label>
         <Input
-          name="email"
-          id="email"
-          type="email"
+          name="addressPrimary"
+          id="addressPrimary"
           ref={register}
           required
-          defaultValue={email ? email : ''}
+          defaultValue={addressPrimary ? addressPrimary : ''}
         />
       </FieldContainer>
       <FieldContainer>
-        <Label htmlFor="phone">Phone Number</Label>
+        <Label htmlFor="addressSecondary">Adress Line 2</Label>
         <Input
-          name="phone"
-          id="phone"
-          type="tel"
+          name="addressSecondary"
+          id="addressSecondary"
+          ref={register}
+          defaultValue={addressSecondary ? addressSecondary : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="city">City</Label>
+        <Input
+          name="city"
+          id="city"
           ref={register}
           required
-          defaultValue={phone ? phone : ''}
+          defaultValue={city ? city : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="state">State</Label>
+        <Input
+          name="state"
+          id="state"
+          ref={register}
+          required
+          defaultValue={state ? state : ''}
+        />
+      </FieldContainer>
+      <FieldContainer>
+        <Label htmlFor="postalCode">Postal Code</Label>
+        <Input
+          name="postalCode"
+          id="postalCode"
+          ref={register}
+          required
+          defaultValue={postalCode ? postalCode : ''}
         />
       </FieldContainer>
       <div
@@ -109,4 +147,4 @@ const StepThree: React.FC<Props> = ({ step, setStep }) => {
   );
 };
 
-export default StepThree;
+export default StepFour;
