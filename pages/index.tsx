@@ -38,13 +38,15 @@ const Landing: React.FC<Props> = ({}) => {
       >
         <div
           sx={{
-            position: 'absolute',
-            top: '2rem',
-            left: '7rem',
+            position: ['static', null, null, null, 'absolute'],
+            p: [2, null, null, null, 'inherit'],
+            top: ['2rem', null, null, null, null, null, '20%'],
+            left: ['7rem', null, null, null, null, null, '20%'],
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexFlow: 'column',
+            transition: 'all .2s ease',
           }}
         >
           <motion.img
@@ -54,7 +56,7 @@ const Landing: React.FC<Props> = ({}) => {
             src={'/unc-sam-logo.png'}
             alt="club logo"
             sx={{
-              height: '250px',
+              height: ['150px', null, '250px'],
             }}
           />
           <motion.h1
@@ -79,6 +81,7 @@ const Landing: React.FC<Props> = ({}) => {
               color: 'white',
               fontSize: 3,
               maxWidth: '50ch',
+              textAlign: ['center', null, null, null, 'left'],
             }}
           >
             Uncle Sam Figure Sakting Club is based in Troy, NY. Some more stuff
@@ -87,6 +90,8 @@ const Landing: React.FC<Props> = ({}) => {
           <div
             sx={{
               display: 'flex',
+              flexFlow: 'row wrap',
+              gap: [4, 4, 0],
               justifyContent: 'space-evenly',
               width: '100%',
             }}

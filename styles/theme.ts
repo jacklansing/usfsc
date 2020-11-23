@@ -1,6 +1,6 @@
 export default {
   userBorderBox: true,
-  breakpoints: ['320px', '600px', '960px', '1280px', '1920px'],
+  breakpoints: ['320px', '600px', '960px', '1280px', '1920px', '2560px'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
