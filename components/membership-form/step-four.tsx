@@ -62,7 +62,7 @@ const StepFour: React.FC<Props> = ({ step, setStep }) => {
     >
       <h2 sx={{ variant: 'headings.h3' }}>Member Address</h2>
       <FieldContainer>
-        <Label htmlFor="addressPrimary">Adress Line 1</Label>
+        <Label htmlFor="addressPrimary">Address Line 1</Label>
         <Input
           name="addressPrimary"
           id="addressPrimary"
@@ -72,7 +72,7 @@ const StepFour: React.FC<Props> = ({ step, setStep }) => {
         />
       </FieldContainer>
       <FieldContainer>
-        <Label htmlFor="addressSecondary">Adress Line 2</Label>
+        <Label htmlFor="addressSecondary">Address Line 2</Label>
         <Input
           name="addressSecondary"
           id="addressSecondary"
