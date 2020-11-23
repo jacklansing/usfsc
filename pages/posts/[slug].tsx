@@ -9,18 +9,28 @@ import formatPostDate from '../../lib/utils/formatPostDate';
 import { useRouter } from 'next/router';
 import LayoutAnimated from '../../components/utils/layout-animated';
 import { motion } from 'framer-motion';
+import Meta from '../../components/utils/meta';
 
 interface Props {
   title: string;
   body: string;
   published_at: string;
+  slug: string;
 }
 
 const PostPage: React.FC<Props> = (props) => {
-  const { title, body, published_at } = props;
+  const { title, body, published_at, slug } = props;
   const router = useRouter();
   return (
     <LayoutAnimated>
+      <Meta
+        ogContentType="article"
+        title={`${title} | Uncle Sam Figure Skating Club`}
+        canonicalUrl={`https://unclesamfsc.com/posts/${slug}`}
+        ogUrl={`https://unclesamfsc.com/posts/${slug}`}
+        ogTitle={`${title} | Uncle Sam FSC`}
+        desc={body.slice(0, 250)}
+      />
       <article
         sx={{
           maxWidth: 900,
@@ -74,8 +84,12 @@ const PostPage: React.FC<Props> = (props) => {
 export default PostPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const postProps = await getPostBySlug(context.params.slug as string);
   return {
-    props: await getPostBySlug(context.params.slug as string),
+    props: {
+      ...postProps,
+      slug: context.params.slug,
+    },
   };
 };
 

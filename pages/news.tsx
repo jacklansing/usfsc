@@ -3,12 +3,12 @@
 import { Box, jsx } from 'theme-ui';
 import { GetStaticProps } from 'next';
 import NextLink from 'next/link';
-import Head from 'next/head';
 import { getAllPosts } from '../lib/fetchPosts';
 import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import LayoutAnimated from '../components/utils/layout-animated';
 import { motion } from 'framer-motion';
+import Meta from '../components/utils/meta';
 
 export type Post = {
   title: string;
@@ -24,10 +24,13 @@ interface Props {
 const News: React.FC<Props> = ({ posts }) => {
   return (
     <div>
-      <Head>
-        <title>News | Uncle Sam Figure Skating Club</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="News | Uncle Sam Figure Skating Club"
+        canonicalUrl="https://unclesamfsc.com/news"
+        ogUrl="https://unclesamfsc.com/news"
+        ogTitle="Uncle Sam Figure Skating Club News"
+        desc="Latest news from the Uncle Sam Figure Skating Club."
+      />
       <LayoutAnimated>
         <Box
           sx={{

@@ -6,12 +6,20 @@ import NextLink from 'next/link';
 import MembershipForm from '../components/membership-form/membership-form';
 import { motion } from 'framer-motion';
 import LayoutAnimated from '../components/utils/layout-animated';
+import Meta from '../components/utils/meta';
 
 interface Props {}
 
 const MembershipApplication: React.FC<Props> = ({}) => {
   return (
     <LayoutAnimated>
+      <Meta
+        title="Membership Application | Uncle Sam Figure Skating Club"
+        canonicalUrl="https://unclesamfsc.com/membership-application"
+        ogUrl="https://unclesamfsc.com/membership-application"
+        ogTitle="USFSC Membership Application"
+        desc="Application to renew your US Figure Skating membership via Uncle Sam Figure Skating Club."
+      />
       <div
         sx={{
           width: ['318', '500px', '600px', '600px'],

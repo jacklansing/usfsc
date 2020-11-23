@@ -10,6 +10,7 @@ import NextLink from 'next/link';
 import Nav from '../components/nav';
 import LayoutAnimated from '../components/utils/layout-animated';
 import { motion } from 'framer-motion';
+import Meta from '../components/utils/meta';
 
 interface Props {
   posts: Post[];
@@ -18,6 +19,12 @@ interface Props {
 const PostHistory: React.FC<Props> = ({ posts }) => {
   return (
     <LayoutAnimated>
+      <Meta
+        title="Post History | Uncle Sam Figure Skating Club"
+        canonicalUrl="https://unclesamfsc.com/post-history"
+        ogUrl="https://unclesamfsc.com/post-history"
+        desc="History of news updates made by Uncle Sam Figure Skating Club."
+      />
       <Nav />
       <div
         sx={{

@@ -6,12 +6,20 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import LayoutAnimated from '../components/utils/layout-animated';
 import Nav from '../components/nav';
+import Meta from '../components/utils/meta';
 
 interface Props {}
 
 const Membership: React.FC<Props> = ({}) => {
   return (
     <LayoutAnimated>
+      <Meta
+        title="Membership | Uncle Sam Figure Skating Club"
+        canonicalUrl="https://unclesamfsc.com/membership"
+        ogUrl="https://unclesamfsc.com/membership"
+        ogTitle="USFSC Membership"
+        desc="Start here to begin renewing your US Figure Skating membership online or by downloading the application to be mailed or handed in."
+      />
       <motion.h1
         initial={{ y: 64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

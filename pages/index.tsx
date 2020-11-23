@@ -5,6 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import Meta from '../components/utils/meta';
 
 interface Props {}
 
@@ -27,6 +28,13 @@ const Landing: React.FC<Props> = ({}) => {
       animate="animate"
       transition={{ delay: 0.2 }}
     >
+      <Meta
+        title="Welcome! | Uncle Sam Figure Skating Club"
+        canonicalUrl="https://unclesamfsc.com/"
+        ogUrl="https://unclesamfsc.com"
+        ogTitle="Uncle Sam Figure Skating Club"
+        desc="Uncle Sam Figure Skating Club is located in Troy, New York. Get updates on the club and renew your US Figure Skating Membership."
+      />
       <div
         sx={{
           height: '100vh',
