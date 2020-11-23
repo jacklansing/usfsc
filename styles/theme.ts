@@ -188,6 +188,9 @@ export default {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
+      a: {
+        color: 'primary',
+      },
     },
     hr: {
       height: '1px',

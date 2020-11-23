@@ -40,7 +40,7 @@ const Membership: React.FC<Props> = ({}) => {
           To renew your USFSC membership, you may complete the online form or
           download and print out the form to be mailed in.
         </p>
-        <NextLink href={`/membership-application`}>
+        <NextLink href={`/membership-application`} passHref>
           <motion.a
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
@@ -53,7 +53,7 @@ const Membership: React.FC<Props> = ({}) => {
             Click Here to Complete the Applicaiton Online
           </motion.a>
         </NextLink>
-        <NextLink href={`/usfsc_membership_application.pdf`}>
+        <NextLink href={`/usfsc_membership_application.pdf`} passHref>
           <motion.a
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}

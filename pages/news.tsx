@@ -50,7 +50,7 @@ const News: React.FC<Props> = ({ posts }) => {
         {posts.map((post, idx) => (
           <PostPreview post={post} idx={idx} key={post.published_at} />
         ))}
-        <NextLink href={`/post-history`}>
+        <NextLink href={`/post-history`} passHref>
           <motion.a
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}

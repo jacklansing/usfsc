@@ -38,7 +38,7 @@ const MembershipApplication: React.FC<Props> = ({}) => {
           <h1 sx={{ textAlign: 'left', variant: 'headings.h2' }}>
             Membership Application
           </h1>
-          <NextLink href={`/news`}>
+          <NextLink href={`/news`} passHref>
             <motion.a
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}

@@ -53,6 +53,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
               <NextLink
                 href={`/posts/${post.slug}?origin=/post-history`}
                 as={`/posts/${post.slug}`}
+                passHref
               >
                 <motion.a
                   whileHover={{ scale: 1.2 }}

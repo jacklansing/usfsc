@@ -12,15 +12,6 @@ interface Props {}
 const Landing: React.FC<Props> = ({}) => {
   const router = useRouter();
 
-  const handleKeyboard = (
-    e: React.KeyboardEvent<HTMLAnchorElement>,
-    destination: string,
-  ) => {
-    if (e.key === 'Enter') {
-      router.push(destination);
-    }
-  };
-
   return (
     <motion.main
       initial="initial"
@@ -104,17 +95,16 @@ const Landing: React.FC<Props> = ({}) => {
               width: '100%',
             }}
           >
-            <NextLink href={`/news`}>
-              <motion.div
-                initial={{ x: -64, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1 }}
-              >
+            <motion.div
+              initial={{ x: -64, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              <NextLink href={`/news`} passHref>
                 <motion.a
                   whileHover={{ scale: 1.2, backgroundColor: '#000' }}
                   whileTap={{ scale: 0.8 }}
-                  onKeyDown={(e) => handleKeyboard(e, '/news')}
-                  tabIndex={1}
+                  tabIndex={0}
                   sx={{
                     variant: 'text.landingButtonLink',
                     width: 'fit-content',
@@ -122,19 +112,18 @@ const Landing: React.FC<Props> = ({}) => {
                 >
                   Latest News &rarr;
                 </motion.a>
-              </motion.div>
-            </NextLink>
+              </NextLink>
+            </motion.div>
             <motion.div
               initial={{ x: 64, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              <NextLink href={`/membership`}>
+              <NextLink href={`/membership`} passHref>
                 <motion.a
                   whileHover={{ scale: 1.2, backgroundColor: '#000' }}
                   whileTap={{ scale: 0.8 }}
-                  onKeyDown={(e) => handleKeyboard(e, '/membership')}
-                  tabIndex={1}
+                  tabIndex={0}
                   sx={{
                     variant: 'text.landingButtonLink',
                     width: 'fit-content',

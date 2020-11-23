@@ -55,7 +55,7 @@ const PostPreview: React.FC<Props> = ({ post, idx }) => {
           variant: 'text.postPreview',
         }}
       />
-      <NextLink href={`/posts/${slug}`}>
+      <NextLink href={`/posts/${slug}`} passHref>
         <motion.a
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}

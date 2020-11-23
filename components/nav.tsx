@@ -10,7 +10,7 @@ interface NavLinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
-  <NextLink href={href}>
+  <NextLink href={href} passHref>
     <motion.a
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
