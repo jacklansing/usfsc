@@ -145,6 +145,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
             id="age"
             ref={register}
             required
+            maxLength={2}
             defaultValue={age ? age : ''}
           />
         </FieldContainer>
@@ -170,6 +171,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                 ref={register}
                 placeholder="MM"
                 required
+                maxLength={2}
                 defaultValue={dobMonth ? dobMonth : ''}
               />
             </FieldContainer>
@@ -181,6 +183,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                 placeholder="DD"
                 ref={register}
                 required
+                maxLength={2}
                 defaultValue={dobDay ? dobDay : ''}
               />
             </FieldContainer>
@@ -192,6 +195,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                 placeholder="YYYY"
                 ref={register}
                 required
+                maxLength={4}
                 defaultValue={dobYear ? dobYear : ''}
               />
             </FieldContainer>
@@ -243,6 +247,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                 id="ageSecondary"
                 ref={register}
                 required
+                maxLength={2}
                 defaultValue={ageSecondary ? ageSecondary : ''}
               />
             </FieldContainer>
@@ -268,6 +273,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                     placeholder="MM"
                     ref={register}
                     required
+                    maxLength={2}
                     defaultValue={dobMonthSecondary ? dobMonthSecondary : ''}
                   />
                 </FieldContainer>
@@ -279,6 +285,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                     placeholder="DD"
                     ref={register}
                     required
+                    maxLength={2}
                     defaultValue={dobDaySecondary ? dobDaySecondary : ''}
                   />
                 </FieldContainer>
@@ -290,6 +297,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
                     placeholder="YYYY"
                     ref={register}
                     required
+                    maxLength={4}
                     defaultValue={dobYearSecondary ? dobYearSecondary : ''}
                   />
                 </FieldContainer>

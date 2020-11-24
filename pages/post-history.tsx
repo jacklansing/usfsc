@@ -25,22 +25,21 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
         ogUrl="https://unclesamfsc.com/post-history"
         desc="History of news updates made by Uncle Sam Figure Skating Club."
       />
-      <Nav />
       <div
         sx={{
-          width: ['320px', '500px', '33%'],
+          width: ['320px', '500px', '50%'],
           mx: 'auto',
         }}
       >
-        <h1
-          sx={{
-            variant: 'headings.h1',
-            width: '100%',
-            mx: 'auto',
-          }}
+        <motion.h1
+          initial={{ y: 64, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
         >
           Post History
-        </h1>
+        </motion.h1>
+        <Nav />
         <ul
           sx={{
             listStyle: 'none',
@@ -75,7 +74,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
                   </h2>
                   <p
                     sx={{
-                      variant: 'text.subtitle',
+                      opacity: 0.8,
                     }}
                   >
                     {formatPostDate(post.published_at)}
