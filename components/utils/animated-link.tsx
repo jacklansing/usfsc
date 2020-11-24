@@ -15,7 +15,7 @@ interface Props {
    */
   hrefAsProp?: string;
   /**
-   * theme-ui variant. pass 'none' to easily ditch the variant styling
+   * theme-ui variant. pass 'none' to easily ditch the default variant, or provide your own
    * (theme-ui will not complain about invalid variants)
    */
   variant?: string;
