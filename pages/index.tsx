@@ -59,7 +59,6 @@ const Landing: React.FC<Props> = ({}) => {
               height: ['150px', null, '250px'],
             }}
           />
-
           <AnimatedHeading
             delay={0.6}
             sx={{
