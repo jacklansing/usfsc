@@ -1,12 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { Box, jsx } from 'theme-ui';
-import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 import React from 'react';
 import LayoutAnimated from '../components/utils/layout-animated';
 import Nav from '../components/nav';
 import Meta from '../components/utils/meta';
+import AnimatedLink from '../components/utils/animated-link';
 
 interface Props {}
 
@@ -40,30 +40,18 @@ const Membership: React.FC<Props> = ({}) => {
           To renew your USFSC membership, you may complete the online form or
           download and print out the form to be mailed in.
         </p>
-        <NextLink href={`/membership-application`} passHref>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            sx={{
-              variant: 'text.postPreviewLink',
-              mt: 4,
-              mb: 4,
-            }}
-          >
-            Click Here to Complete the Applicaiton Online
-          </motion.a>
-        </NextLink>
-        <NextLink href={`/usfsc_membership_application.pdf`} passHref>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            sx={{
-              variant: 'text.postPreviewLink',
-            }}
-          >
-            Click Here to Download the Application
-          </motion.a>
-        </NextLink>
+        <AnimatedLink
+          href="/membership-application"
+          sx={{
+            mt: 4,
+            mb: 4,
+          }}
+        >
+          Click Here to Complete the Applicaiton Online
+        </AnimatedLink>
+        <AnimatedLink href="/usfsc_membership_application.pdf">
+          Click Here to Download the Application
+        </AnimatedLink>
       </Box>
     </LayoutAnimated>
   );

@@ -2,11 +2,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import React from 'react';
-import NextLink from 'next/link';
 import MembershipForm from '../components/membership-form/membership-form';
-import { motion } from 'framer-motion';
 import LayoutAnimated from '../components/utils/layout-animated';
 import Meta from '../components/utils/meta';
+import AnimatedLink from '../components/utils/animated-link';
 
 interface Props {}
 
@@ -38,18 +37,14 @@ const MembershipApplication: React.FC<Props> = ({}) => {
           <h1 sx={{ textAlign: 'left', variant: 'headings.h2' }}>
             Membership Application
           </h1>
-          <NextLink href={`/news`} passHref>
-            <motion.a
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.8 }}
-              sx={{
-                variant: 'text.postPreviewLink',
-                mx: 0,
-              }}
-            >
-              Home
-            </motion.a>
-          </NextLink>
+          <AnimatedLink
+            href="/news"
+            sx={{
+              mx: 0,
+            }}
+          >
+            Home
+          </AnimatedLink>
         </div>
         <MembershipForm />
       </div>

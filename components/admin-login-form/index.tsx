@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Input, jsx, Label } from 'theme-ui';
+import { Input, jsx, Label } from 'theme-ui';
 import FieldContainer from '../utils/field-container';
 import SpinnerButton from '../utils/SpinnerButton';
 
@@ -44,7 +44,7 @@ const AdminLoginForm: React.FC<Props> = ({}) => {
       if (res.status === 200) {
         const resData = await res.json();
         localStorage.setItem('usfsc-auth', resData.jwt);
-        router.push('/admin/review-membership-apps');
+        router.push('/admin/membership-applications');
       } else {
         setError(true);
         setSubmitting(false);

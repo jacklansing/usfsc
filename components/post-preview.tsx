@@ -4,10 +4,9 @@ import { Divider, jsx } from 'theme-ui';
 import React from 'react';
 import { Box } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
-import NextLink from 'next/link';
 import formatPostDate from '../lib/utils/formatPostDate';
 import { Post } from '../pages/news';
-import { motion } from 'framer-motion';
+import AnimatedLink from './utils/animated-link';
 
 interface Props {
   post: Post;
@@ -55,17 +54,7 @@ const PostPreview: React.FC<Props> = ({ post, idx }) => {
           variant: 'text.postPreview',
         }}
       />
-      <NextLink href={`/posts/${slug}`} passHref>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.8 }}
-          sx={{
-            variant: 'text.postPreviewLink',
-          }}
-        >
-          Read More
-        </motion.a>
-      </NextLink>
+      <AnimatedLink href={`/posts/${slug}`}>Read More</AnimatedLink>
       <Divider
         sx={{
           marginTop: 4,

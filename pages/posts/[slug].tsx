@@ -3,13 +3,12 @@
 import { jsx } from 'theme-ui';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import ReactMarkdown from 'react-markdown';
-import NextLink from 'next/link';
 import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
 import formatPostDate from '../../lib/utils/formatPostDate';
 import { useRouter } from 'next/router';
 import LayoutAnimated from '../../components/utils/layout-animated';
-import { motion } from 'framer-motion';
 import Meta from '../../components/utils/meta';
+import AnimatedLink from '../../components/utils/animated-link';
 
 interface Props {
   title: string;
@@ -62,21 +61,12 @@ const PostPage: React.FC<Props> = (props) => {
             variant: 'text.body',
           }}
         />
-        <NextLink
+        <AnimatedLink
           href={router.query.origin ? (router.query.origin as string) : '/news'}
-          passHref
+          sx={{ marginLeft: 0 }}
         >
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            sx={{
-              variant: 'text.postPreviewLink',
-              marginLeft: 0,
-            }}
-          >
-            &larr; Back
-          </motion.a>
-        </NextLink>
+          &larr; Back
+        </AnimatedLink>
       </article>
     </LayoutAnimated>
   );

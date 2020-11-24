@@ -2,16 +2,15 @@
 /** @jsx jsx */
 import { useRouter } from 'next/router';
 import React, { FormEvent, useEffect, useState } from 'react';
-import { jsx, Box, Divider, Spinner, Button } from 'theme-ui';
+import { jsx, Box, Divider, Spinner } from 'theme-ui';
 import LayoutAnimated from '../../../components/utils/layout-animated';
 import {
   getMembershipAppById,
   markMembershipAppReviewed,
 } from '../../../lib/membershipAppRequests';
 import { userPrivateRoute } from '../../../lib/utils/usePrivateRoute';
-import NextLink from 'next/link';
-import { motion } from 'framer-motion';
 import SpinnerButton from '../../../components/utils/SpinnerButton';
+import AnimatedLink from '../../../components/utils/animated-link';
 
 interface Props {}
 
@@ -39,8 +38,8 @@ const ReviewMembership: React.FC<Props> = ({}) => {
         sx={{
           display: 'block',
           mx: 'auto',
-          height: '300px',
-          width: '300px',
+          height: '150px',
+          width: '150px',
           mt: '10%',
         }}
       />
@@ -70,22 +69,19 @@ const ReviewMembership: React.FC<Props> = ({}) => {
           width: '1200px',
         }}
       >
-        <NextLink href={'/admin/membership-applications'} passHref>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            sx={{
-              variant: 'text.postPreviewLink',
-              borderRadius: 2,
-              mr: 0,
-              ml: 'auto',
-              mb: 4,
-              fontFamily: 'monospace',
-            }}
-          >
-            &larr; Back
-          </motion.a>
-        </NextLink>
+        <AnimatedLink
+          href={'/admin/membership-applications'}
+          sx={{
+            variant: 'text.postPreviewLink',
+            borderRadius: 2,
+            mr: 0,
+            ml: 'auto',
+            mb: 4,
+            fontFamily: 'monospace',
+          }}
+        >
+          &larr; Back
+        </AnimatedLink>
         {memberApp && (
           <React.Fragment>
             <h2>Application Type</h2>

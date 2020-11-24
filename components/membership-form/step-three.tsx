@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Label, Box, Button, Input } from 'theme-ui';
+import { jsx, Label, Button, Input } from 'theme-ui';
 import React from 'react';
 import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';

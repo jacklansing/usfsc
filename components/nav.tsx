@@ -1,36 +1,32 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import NextLink from 'next/link';
 import React from 'react';
-import { motion } from 'framer-motion';
+import AnimatedLink from './utils/animated-link';
 
 interface NavLinkProps {
   href: string;
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
-  <NextLink href={href} passHref>
-    <motion.a
-      whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.8 }}
-      sx={{
-        px: 2,
-        py: 1,
-        mx: 3,
-        fontSize: [null, null, 3, 3, 3, 4, 4],
-        textDecoration: 'none',
-        letterSpacing: '1px',
-        height: 'fit-content',
-        fontWeight: 'bold',
-        position: 'relative',
-        cursor: 'pointer',
-        padding: 1,
-      }}
-    >
-      {children}
-    </motion.a>
-  </NextLink>
+  <AnimatedLink
+    href={href}
+    sx={{
+      px: 2,
+      py: 1,
+      mx: 3,
+      fontSize: [null, null, 3, 3, 3, 4, 4],
+      textDecoration: 'none',
+      letterSpacing: '1px',
+      height: 'fit-content',
+      fontWeight: 'bold',
+      position: 'relative',
+      cursor: 'pointer',
+      padding: 1,
+    }}
+  >
+    {children}
+  </AnimatedLink>
 );
 
 interface Props {}

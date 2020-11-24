@@ -6,11 +6,11 @@ import React from 'react';
 import { Post } from './news';
 import { getAllPosts } from '../lib/fetchPosts';
 import formatPostDate from '../lib/utils/formatPostDate';
-import NextLink from 'next/link';
 import Nav from '../components/nav';
 import LayoutAnimated from '../components/utils/layout-animated';
 import { motion } from 'framer-motion';
 import Meta from '../components/utils/meta';
+import AnimatedLink from '../components/utils/animated-link';
 
 interface Props {
   posts: Post[];
@@ -49,38 +49,33 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
         >
           {posts.map((post) => (
             <li key={post.published_at}>
-              <NextLink
+              <AnimatedLink
                 href={`/posts/${post.slug}?origin=/post-history`}
-                as={`/posts/${post.slug}`}
-                passHref
+                hrefAsProp={`/posts/${post.slug}`}
+                variant="none"
+                sx={{
+                  textDecoration: 'none',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  cursor: 'pointer',
+                }}
               >
-                <motion.a
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
+                <h2
                   sx={{
-                    textDecoration: 'none',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    cursor: 'pointer',
+                    variant: 'headings.h3',
+                    pr: 4,
                   }}
                 >
-                  <h2
-                    sx={{
-                      variant: 'headings.h3',
-                      pr: 4,
-                    }}
-                  >
-                    {post.title}
-                  </h2>
-                  <p
-                    sx={{
-                      opacity: 0.8,
-                    }}
-                  >
-                    {formatPostDate(post.published_at)}
-                  </p>
-                </motion.a>
-              </NextLink>
+                  {post.title}
+                </h2>
+                <p
+                  sx={{
+                    opacity: 0.8,
+                  }}
+                >
+                  {formatPostDate(post.published_at)}
+                </p>
+              </AnimatedLink>
             </li>
           ))}
         </ul>

@@ -2,13 +2,13 @@
 /** @jsx jsx */
 import { Box, jsx } from 'theme-ui';
 import { GetStaticProps } from 'next';
-import NextLink from 'next/link';
 import { getAllPosts } from '../lib/fetchPosts';
 import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import LayoutAnimated from '../components/utils/layout-animated';
 import { motion } from 'framer-motion';
 import Meta from '../components/utils/meta';
+import AnimatedLink from '../components/utils/animated-link';
 
 export type Post = {
   title: string;
@@ -50,19 +50,15 @@ const News: React.FC<Props> = ({ posts }) => {
         {posts.map((post, idx) => (
           <PostPreview post={post} idx={idx} key={post.published_at} />
         ))}
-        <NextLink href={`/post-history`} passHref>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            sx={{
-              variant: 'text.postPreviewLink',
-              textAlign: 'center',
-              p: 5,
-            }}
-          >
-            Older Posts &rarr;
-          </motion.a>
-        </NextLink>
+        <AnimatedLink
+          href="/post-history"
+          sx={{
+            textAlign: 'center',
+            p: 5,
+          }}
+        >
+          Older Posts &rarr;
+        </AnimatedLink>
       </LayoutAnimated>
     </div>
   );
