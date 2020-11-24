@@ -14,7 +14,7 @@ const AdminLoginForm: React.FC<Props> = ({}) => {
   // make sure we skip logging in when already have token.
   useEffect(() => {
     const isAuth = localStorage.getItem('usfsc-auth');
-    if (isAuth) router.push('/admin/review-membership-apps');
+    if (isAuth) router.push('/admin/membership-applications');
   }, []);
 
   const { register, handleSubmit } = useForm();
