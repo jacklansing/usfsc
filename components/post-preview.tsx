@@ -6,7 +6,7 @@ import { Box } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
 import NextLink from 'next/link';
 import formatPostDate from '../lib/utils/formatPostDate';
-import { Post } from '../pages';
+import { Post } from '../pages/news';
 import { motion } from 'framer-motion';
 
 interface Props {
