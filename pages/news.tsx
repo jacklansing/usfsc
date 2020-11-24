@@ -9,6 +9,7 @@ import LayoutAnimated from '../components/utils/layout-animated';
 import { motion } from 'framer-motion';
 import Meta from '../components/utils/meta';
 import AnimatedLink from '../components/utils/animated-link';
+import AnimatedHeading from '../components/utils/animated-heading';
 
 export type Post = {
   title: string;
@@ -37,14 +38,7 @@ const News: React.FC<Props> = ({ posts }) => {
             position: 'relative',
           }}
         >
-          <motion.h1
-            initial={{ y: 64, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
-          >
-            Uncle Sam FSC News
-          </motion.h1>
+          <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
         </Box>
         <Nav />
         {posts.map((post, idx) => (

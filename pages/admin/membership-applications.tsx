@@ -8,6 +8,7 @@ import { userPrivateRoute } from '../../lib/utils/usePrivateRoute';
 import { motion } from 'framer-motion';
 import formatPostDate from '../../lib/utils/formatPostDate';
 import AnimatedLink from '../../components/utils/animated-link';
+import AnimatedHeading from '../../components/utils/animated-heading';
 
 interface Props {}
 
@@ -27,14 +28,7 @@ const MembershipApplications: React.FC<Props> = ({}) => {
 
   return (
     <LayoutAnimated>
-      <motion.h1
-        initial={{ y: 64, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
-      >
-        Membership Applications
-      </motion.h1>
+      <AnimatedHeading>Membership Applications</AnimatedHeading>
       <Box
         sx={{
           maxWidth: '600px',

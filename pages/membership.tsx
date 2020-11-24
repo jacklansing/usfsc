@@ -7,6 +7,7 @@ import LayoutAnimated from '../components/utils/layout-animated';
 import Nav from '../components/nav';
 import Meta from '../components/utils/meta';
 import AnimatedLink from '../components/utils/animated-link';
+import AnimatedHeading from '../components/utils/animated-heading';
 
 interface Props {}
 
@@ -20,13 +21,7 @@ const Membership: React.FC<Props> = ({}) => {
         ogTitle="USFSC Membership"
         desc="Start here to begin renewing your US Figure Skating membership online or by downloading the application to be mailed or handed in."
       />
-      <motion.h1
-        initial={{ y: 64, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
-      >
-        US Figure Skating Club Application
-      </motion.h1>
+      <AnimatedHeading>US Figure Skating Club Application</AnimatedHeading>
       <Nav />
       <Box
         mx="auto"

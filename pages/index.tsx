@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import Meta from '../components/utils/meta';
+import AnimatedHeading from '../components/utils/animated-heading';
 
 interface Props {}
 
@@ -58,10 +59,9 @@ const Landing: React.FC<Props> = ({}) => {
               height: ['150px', null, '250px'],
             }}
           />
-          <motion.h1
-            initial={{ y: 64, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
+
+          <AnimatedHeading
+            delay={0.6}
             sx={{
               textAlign: 'center',
               variant: 'headings.h2',
@@ -71,7 +71,7 @@ const Landing: React.FC<Props> = ({}) => {
             }}
           >
             Fire up the zamboni!
-          </motion.h1>
+          </AnimatedHeading>
           <motion.p
             initial={{ y: 64, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
