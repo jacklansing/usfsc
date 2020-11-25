@@ -25,7 +25,11 @@ const AnimatedHeading: React.FC<Props> = ({
       initial={{ y: 64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: delay }}
-      sx={{ textAlign: 'center', marginTop: 5, variant: 'headings.h1' }}
+      sx={{
+        textAlign: 'center',
+        variant: 'headings.h1',
+        marginTop: [2, 3, 4, 5],
+      }}
       {...props}
     >
       {children}

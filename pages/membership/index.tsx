@@ -47,6 +47,34 @@ const Membership: React.FC<Props> = ({}) => {
           Click Here to Download the Application
         </AnimatedLink>
       </Box>
+      <Box
+        mx="auto"
+        sx={{
+          maxWidth: '90ch',
+          overflow: 'hidden',
+          marginTop: 5,
+          textAlign: 'center',
+        }}
+      >
+        <h2
+          sx={{
+            variant: 'headings.h2',
+          }}
+        >
+          Looking for a basic skills program?
+        </h2>
+        <p sx={{ variant: 'text.body' }}>
+          Check out{' '}
+          <a
+            sx={{ textDecoration: 'none' }}
+            href="https://www.learntoskateusa.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Learn to Skate USA!
+          </a>
+        </p>
+      </Box>
     </LayoutAnimated>
   );
 };
