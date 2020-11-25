@@ -6,11 +6,9 @@ import { getAllPosts } from '../lib/fetchPosts';
 import Nav from '../components/nav';
 import PostPreview from '../components/post-preview';
 import LayoutAnimated from '../components/utils/layout-animated';
-import { motion } from 'framer-motion';
 import Meta from '../components/utils/meta';
 import AnimatedLink from '../components/utils/animated-link';
 import AnimatedHeading from '../components/utils/animated-heading';
-import FBLogo from '../components/fb-logo';
 
 export type Post = {
   title: string;
@@ -39,15 +37,7 @@ const News: React.FC<Props> = ({ posts }) => {
             position: 'relative',
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
-          </Box>
+          <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
         </Box>
         <Nav />
         {posts.map((post, idx) => (
