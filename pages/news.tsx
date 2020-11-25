@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import Meta from '../components/utils/meta';
 import AnimatedLink from '../components/utils/animated-link';
 import AnimatedHeading from '../components/utils/animated-heading';
+import FBLogo from '../components/fb-logo';
 
 export type Post = {
   title: string;
@@ -38,7 +39,15 @@ const News: React.FC<Props> = ({ posts }) => {
             position: 'relative',
           }}
         >
-          <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
+          </Box>
         </Box>
         <Nav />
         {posts.map((post, idx) => (

@@ -3,6 +3,7 @@
 import { jsx } from 'theme-ui';
 import React from 'react';
 import AnimatedLink from './utils/animated-link';
+import FBLogo from './fb-logo';
 
 interface NavLinkProps {
   href: string;
@@ -40,12 +41,14 @@ const Nav: React.FC<Props> = () => {
         flexFlow: 'row no-wrap',
         justifyContent: 'center',
         marginRight: 1,
+        marginLeft: [-2, null, 0],
         mt: 4,
         textTransform: 'uppercase',
       }}
     >
       <NavLink href="/news">Home</NavLink>
       <NavLink href="/membership">Membership</NavLink>
+      <FBLogo />
     </nav>
   );
 };
