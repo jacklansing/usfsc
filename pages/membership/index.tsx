@@ -41,7 +41,7 @@ const Membership: React.FC<Props> = ({}) => {
             mb: 4,
           }}
         >
-          Click Here to Complete the Applicaiton Online
+          Click Here to Complete the Application Online
         </AnimatedLink>
         <AnimatedLink href="/usfsc_membership_application.pdf">
           Click Here to Download the Application

@@ -14,10 +14,12 @@ const SpinnerButton: React.FC<ButtonOptions> = ({
   isLoading = false,
   isDisabled = false,
   variant = 'contained',
+  type = 'button',
   ...props
 }) => {
   return (
     <ThemeButton
+      type={type}
       variant={variant}
       disabled={isLoading || isDisabled}
       {...props}

@@ -10,6 +10,7 @@ import FieldPreview from './field-preview';
 import { loadStripe } from '@stripe/stripe-js';
 import { motion } from 'framer-motion';
 import getMembershipSKU from '../../lib/utils/getMembershipSKU';
+import SpinnerButton from '../utils/SpinnerButton';
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 );
@@ -21,6 +22,7 @@ interface Props {
 
 const FormReview: React.FC<Props> = ({ step, setStep }) => {
   const [error, setError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const { state } = useStateMachine(updateAction);
 
@@ -49,6 +51,7 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
 
     try {
       e.preventDefault();
+      setSubmitting(true);
       // Submit membership application without payment received
       let membershipData: any = {
         membership_type,
@@ -103,11 +106,14 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
         clientReferenceId: resData.id.toString(),
       });
 
+      setSubmitting(false);
+
       if (error) {
         setError(error);
       }
     } catch (e) {
       setError(e);
+      setSubmitting(false);
     }
   };
 
@@ -252,15 +258,17 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
             display: 'contents',
           }}
         >
-          <Button
+          <SpinnerButton
             type="submit"
             variant="contained"
+            isDisabled={submitting}
+            isLoading={submitting}
             sx={{
               flex: ['0 1 100%', null, null, '0 1 33%'],
             }}
           >
             Submit Application
-          </Button>
+          </SpinnerButton>
         </form>
       </div>
     </motion.section>
