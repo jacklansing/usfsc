@@ -25,12 +25,15 @@ const ReviewMembership: React.FC<Props> = ({}) => {
 
   useEffect(() => {
     (async () => {
-      setLoading(true);
-      const membershipApp = await getMembershipAppById(memberAppId as string);
-      setMemberApp(membershipApp);
-      setLoading(false);
+      // Bandaid fix for first render where router.query.id can be undefined
+      if (router.query.id !== undefined) {
+        setLoading(true);
+        const membershipApp = await getMembershipAppById(memberAppId as string);
+        setMemberApp(membershipApp);
+        setLoading(false);
+      }
     })();
-  }, []);
+  }, [memberAppId]);
 
   if (loading) {
     return (
