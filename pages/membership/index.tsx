@@ -1,13 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { Box, jsx } from 'theme-ui';
-import { motion } from 'framer-motion';
 import React from 'react';
-import LayoutAnimated from '../components/utils/layout-animated';
-import Nav from '../components/nav';
-import Meta from '../components/utils/meta';
-import AnimatedLink from '../components/utils/animated-link';
-import AnimatedHeading from '../components/utils/animated-heading';
+import LayoutAnimated from '../../components/utils/layout-animated';
+import Nav from '../../components/nav';
+import Meta from '../../components/utils/meta';
+import AnimatedLink from '../../components/utils/animated-link';
+import AnimatedHeading from '../../components/utils/animated-heading';
 
 interface Props {}
 
@@ -36,7 +35,7 @@ const Membership: React.FC<Props> = ({}) => {
           download and print out the form to be mailed in.
         </p>
         <AnimatedLink
-          href="/membership-application"
+          href="/membership/membership-application"
           sx={{
             mt: 4,
             mb: 4,

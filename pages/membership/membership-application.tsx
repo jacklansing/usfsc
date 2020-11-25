@@ -2,10 +2,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import React from 'react';
-import MembershipForm from '../components/membership-form/membership-form';
-import LayoutAnimated from '../components/utils/layout-animated';
-import Meta from '../components/utils/meta';
-import AnimatedLink from '../components/utils/animated-link';
+import MembershipForm from '../../components/membership-form/membership-form';
+import LayoutAnimated from '../../components/utils/layout-animated';
+import Meta from '../../components/utils/meta';
+import AnimatedLink from '../../components/utils/animated-link';
 
 interface Props {}
 
@@ -14,8 +14,8 @@ const MembershipApplication: React.FC<Props> = ({}) => {
     <LayoutAnimated>
       <Meta
         title="Membership Application | Uncle Sam Figure Skating Club"
-        canonicalUrl="https://unclesamfsc.com/membership-application"
-        ogUrl="https://unclesamfsc.com/membership-application"
+        canonicalUrl="https://unclesamfsc.com/membership/membership-application"
+        ogUrl="https://unclesamfsc.com/membership/membership-application"
         ogTitle="USFSC Membership Application"
         desc="Application to renew your US Figure Skating membership via Uncle Sam Figure Skating Club."
       />

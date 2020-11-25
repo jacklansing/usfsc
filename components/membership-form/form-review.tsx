@@ -98,8 +98,8 @@ const FormReview: React.FC<Props> = ({ step, setStep }) => {
       const { error } = await stripe.redirectToCheckout({
         mode: 'payment',
         lineItems: [{ price: membershipSKU, quantity: 1 }],
-        successUrl: `${window.location.origin}/success`,
-        cancelUrl: `${window.location.origin}/canceled`,
+        successUrl: `${window.location.origin}/membership/payment-sucess`,
+        cancelUrl: `${window.location.origin}/membership/payment-cancelled`,
         clientReferenceId: resData.id.toString(),
       });
 
