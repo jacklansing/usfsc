@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { getAllPosts, getPostBySlug } from '../../lib/fetchPosts';
 import formatPostDate from '../../lib/utils/formatPostDate';
@@ -15,10 +16,18 @@ interface Props {
   body: string;
   published_at: string;
   slug: string;
+  main_img: any;
 }
 
 const PostPage: React.FC<Props> = (props) => {
   const { title, body, published_at, slug } = props;
+  // Depending on the original size of the image, strapi will
+  // transform it to have a large, medium, or small size.
+  // We'll take the best quality first, since next/image will take the reins from there
+  const main_img =
+    props.main_img[0]?.formats.large ||
+    props.main_img[0]?.formats.medium ||
+    props.main_img[0]?.formats.small;
   const router = useRouter();
   return (
     <LayoutAnimated>
@@ -34,6 +43,7 @@ const PostPage: React.FC<Props> = (props) => {
         sx={{
           maxWidth: 900,
           mx: 'auto',
+          mb: [4],
         }}
       >
         <header>
@@ -55,6 +65,16 @@ const PostPage: React.FC<Props> = (props) => {
             {formatPostDate(published_at)}
           </p>
         </header>
+        {main_img && (
+          <Image
+            src={process.env.NEXT_PUBLIC_STRAPI_API_URL + main_img.url}
+            alt="article main"
+            sx={{ mx: 'auto', display: 'block', borderRadius: 2 }}
+            height={main_img.height}
+            width={main_img.width}
+            layout="responsive"
+          />
+        )}
         <ReactMarkdown
           source={body}
           sx={{
