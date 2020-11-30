@@ -24,6 +24,7 @@ const FBLogo: React.FC<Props> = ({}) => {
           ml: [0, null, 2],
         }}
         src="f-logo.png"
+        alt="facebook logo"
       />
     </motion.a>
   );
