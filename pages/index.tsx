@@ -4,15 +4,12 @@ import { jsx } from 'theme-ui';
 import React from 'react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import Meta from '../components/utils/meta';
 import AnimatedHeading from '../components/utils/animated-heading';
 
 interface Props {}
 
 const Landing: React.FC<Props> = ({}) => {
-  const router = useRouter();
-
   return (
     <motion.main
       initial="initial"
