@@ -4,12 +4,17 @@ import { jsx } from 'theme-ui';
 import React from 'react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import Meta from '../components/utils/meta';
 import AnimatedHeading from '../components/utils/animated-heading';
+import { getLandingPageData } from '../lib/fetchLanding';
 
-interface Props {}
+interface Props {
+  header: string;
+  intro: string;
+}
 
-const Landing: React.FC<Props> = ({}) => {
+const Landing: React.FC<Props> = ({ header, intro }) => {
   return (
     <motion.main
       initial="initial"
@@ -66,9 +71,9 @@ const Landing: React.FC<Props> = ({}) => {
               margin: 0,
             }}
           >
-            Fire up the zamboni!
+            {header}
           </AnimatedHeading>
-          <motion.p
+          <motion.div
             initial={{ y: 64, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -79,9 +84,8 @@ const Landing: React.FC<Props> = ({}) => {
               textAlign: ['center', null, null, null, 'left'],
             }}
           >
-            Uncle Sam Figure Sakting Club is based in Troy, NY. Some more stuff
-            should totally go here!
-          </motion.p>
+            <ReactMarkdown source={intro} />
+          </motion.div>
           <div
             sx={{
               display: 'flex',
@@ -135,5 +139,15 @@ const Landing: React.FC<Props> = ({}) => {
     </motion.main>
   );
 };
+
+export async function getStaticProps() {
+  const { header, intro } = await getLandingPageData();
+  return {
+    props: {
+      header,
+      intro,
+    },
+  };
+}
 
 export default Landing;
