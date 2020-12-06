@@ -51,6 +51,7 @@ const PostHistory: React.FC<Props> = ({ posts }) => {
                   textDecoration: 'none',
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
+                  alignItems: 'center',
                   cursor: 'pointer',
                 }}
               >
