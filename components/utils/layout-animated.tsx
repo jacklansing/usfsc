@@ -16,7 +16,7 @@ const LayoutAnimated: React.FC<Props> = ({ children }) => {
       sx={{
         padding: [3, , , 0],
         mx: 'auto',
-        maxWidth: ['314px', '540px', '700px', '1100px', '1366px'],
+        maxWidth: [null, '540px', '700px', '1100px', '1366px'],
       }}
     >
       {children}

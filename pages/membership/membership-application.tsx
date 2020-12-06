@@ -21,7 +21,7 @@ const MembershipApplication: React.FC<Props> = ({}) => {
       />
       <div
         sx={{
-          width: ['318', '500px', '600px', '600px'],
+          maxWidth: ['318px', '500px', '600px', '600px'],
           mx: 'auto',
           mt: 3,
           padding: [3, , , 0],
