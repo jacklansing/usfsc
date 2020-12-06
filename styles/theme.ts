@@ -135,12 +135,16 @@ export default {
   forms: {
     fieldContainer: {
       padding: 2,
+      paddingLeft: 0,
       marginBottom: 1,
     },
     label: {
       pb: 1,
+      fontSize: [3],
     },
     input: {
+      fontFamily: 'body',
+      fontSize: [3],
       outline: 0,
       border: 1,
       transition: 'all 0.2s',
@@ -166,6 +170,7 @@ export default {
       padding: 2,
       textAlign: 'center',
       textDecoration: 'none',
+      fontSize: [3],
       fontFamily: 'monospace',
       borderRadius: 0,
       color: 'white',
