@@ -156,7 +156,7 @@ const StepTwo: React.FC<Props> = ({ step, setStep }) => {
             margin: 0,
           }}
         >
-          <legend sx={{ fontSize: 3 }}>Date of Birth</legend>
+          <legend>Date of Birth</legend>
           <div
             sx={{
               display: 'grid',
