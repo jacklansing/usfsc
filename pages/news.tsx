@@ -37,7 +37,7 @@ const News: React.FC<Props> = ({ posts }) => {
             position: 'relative',
           }}
         >
-          <AnimatedHeading>Uncle Sam FSC News</AnimatedHeading>
+          <AnimatedHeading>Uncle Sam Figure Skating Club News</AnimatedHeading>
         </Box>
         <Nav />
         {posts.map((post, idx) => (

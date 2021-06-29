@@ -24,6 +24,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
       position: 'relative',
       cursor: 'pointer',
       padding: 1,
+      color: 'whitesmoke',
     }}
   >
     {children}

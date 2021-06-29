@@ -35,6 +35,9 @@ const PostPreview: React.FC<Props> = ({ post, idx }) => {
         <h2
           sx={{
             variant: 'headings.h2',
+            maxWidth: 'fit-content',
+            mx: 'auto',
+            letterSpacing: 3,
           }}
         >
           {title}

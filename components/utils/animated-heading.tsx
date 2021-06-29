@@ -28,7 +28,10 @@ const AnimatedHeading: React.FC<Props> = ({
       sx={{
         textAlign: 'center',
         variant: 'headings.h1',
-        marginTop: [2, 3, 4, 5],
+        mt: 0,
+        paddingTop: [2, 3, 4, 5],
+        fontStyle: 'italic',
+        color: 'whitesmoke',
       }}
       {...props}
     >
